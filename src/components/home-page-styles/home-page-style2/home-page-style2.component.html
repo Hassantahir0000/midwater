@@ -1,0 +1,78 @@
+<app-banner></app-banner>
+<ion-grid class="offers-grid">
+  <ion-row>
+    <ion-col size="4">
+      <ion-row class="ion-justify-content-center">
+        <ion-icon name="ticket-outline"></ion-icon>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-label class="font-small ion-text-capitalize">{{"10% off first order"|translate}}</ion-label>
+      </ion-row>
+    </ion-col>
+    <ion-col size="4">
+      <ion-row class="ion-justify-content-center">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-label class="font-small ion-text-capitalize">{{"free shipping on $35+"|translate}}</ion-label>
+      </ion-row>
+    </ion-col>
+    <ion-col size="4">
+      <ion-row class="ion-justify-content-center">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-row>
+      <ion-row class="ion-text-center ion-text-capitalize">
+        <ion-label class="font-small">{{"30 days to return"|translate}}</ion-label>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"year end sale"|translate}}
+  </ion-label>
+</ion-item>
+
+<!-- IMAGE ONLY -->
+<!-- <ion-grid class="ion-no-padding ion-no-margin">
+  <ion-img [appImageValidate]="70" [class.round-borders]="config.roundBordersBool" src="assets/Capture.png" (click)="shared.openShopPage()"></ion-img>
+</ion-grid> -->
+
+<!-- labels  -->
+<!-- <ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"Top Rated "|translate}}
+  </ion-label>
+</ion-item> -->
+<app-products-slider filter="topseller"></app-products-slider>
+
+
+<!-- HOT ITEMS labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"shop by category"|translate}}
+  </ion-label>
+</ion-item>
+
+<!-- grid container -->
+<ion-grid class="ion-no-padding" class="categories-grid">
+  <ion-row class="ion-no-padding">
+    <ion-col size="6" *ngFor="let c of appCategoriesService.categoriesArray" class="ion-no-padding">
+      <ion-card (click)="onClickCategory(c)" class="ion-no-margin">
+        <ion-img [appImageValidate]="70" [src]="config.imgThumbnailUrlString+c.gallary" [class.round-borders]="config.roundBordersBool">
+        </ion-img>
+        <ion-card-header class="ion-text-center ion-no-padding padding-vertical-5">
+          <ion-card-title class="font-extra-large ion-text-capitalize truncate">{{c.name}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- <ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"just for you"|translate}}
+  </ion-label>
+</ion-item> -->
+<app-home-products-list></app-home-products-list>

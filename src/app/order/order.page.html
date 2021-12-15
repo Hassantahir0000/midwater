@@ -1,0 +1,132 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios">{{'Checkout' |translate}}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="ion-no-padding variable-background-color margin-top-5">
+    <ion-row>
+      <app-app-progress-bar [value]="3"></app-app-progress-bar>
+    </ion-row>
+  </div>
+
+  <ion-list class="bg-transparent">
+    <ion-item class="bg-transparent padding-top-10" lines="none" *ngFor="let p of appCartService.cartProductsArray">
+      <app-product-list-card page="order" [data]="p"></app-product-list-card>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid class="ion-no-padding margin-top-10">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <app-address-info-card [data]="getShippingAddressData()"></app-address-info-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-no-padding margin-top-10">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <app-address-info-card [data]="getBillingAddressData()"></app-address-info-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="amount variable-background-color margin-top-10 padding-vertical-10"
+    [class.round-borders]="config.roundBordersBool">
+    <!-- row1 -->
+    <ion-row>
+      <ion-col class="padding-horizontal-10 ion-text-capitalize">
+        <ion-label class="font-large"><span>{{"subotal"|translate}}:</span></ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end padding-horizontal-10"><span
+          class="font-large">{{appCartService.cartSubTotalFloat|curency}}</span>
+      </ion-col>
+    </ion-row>
+    <!-- 2nd row -->
+    <ion-row>
+      <ion-col class="padding-horizontal-10 ion-text-capitalize">
+        <ion-label class="font-large"><span>{{"discount"|translate}}:</span></ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end padding-horizontal-10"><span
+          class="font-large">{{appCartService.cartDiscountFloat|curency}}</span>
+      </ion-col>
+    </ion-row>
+    <!-- 2nd row -->
+    <ion-row>
+      <ion-col class="padding-horizontal-10 ion-text-capitalize">
+        <ion-label class="font-large"><span>{{"estimated shipping"|translate}}:</span></ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end padding-horizontal-10"><span
+          class="font-large">{{appCartService.cartShippingFloat|curency}}</span>
+      </ion-col>
+    </ion-row>
+    <!-- 3rd row -->
+    <ion-row>
+      <ion-col class="padding-horizontal-10 ion-text-capitalize">
+        <ion-label class="font-large"><span>{{"tax"|translate}}:</span></ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end padding-horizontal-10 "><span
+          class="font-large">{{appCartService.cartTaxFloat|curency}}</span>
+      </ion-col>
+    </ion-row><br>
+    <!-- 4th row -->
+    <ion-row>
+      <ion-col class="padding-horizontal-10 ion-text-capitalize">
+        <ion-label class="font-large"><span>{{"order total"|translate}}:</span></ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end padding-horizontal-10"><span style="color: red;"
+          class="font-large">{{appCartService.cartTotalFloat|curency}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-no-padding margin-top-10 bg-transparent"
+    [class.hide-content]="appOrderService.orderDetails.payment_method=='banktransfer' || appOrderService.orderDetails.payment_method=='cod'"
+    [class.round-borders]="config.roundBordersBool">
+    <form #stripeForm="ngForm">
+      <ion-list class="payment-fields padding-bottom-10">
+        <p class="ion-text-center font-bold margin-bottom-5">{{"pay by card"|translate}}</p>
+        <ion-item lines=none>
+          <ion-label position="stacked">*{{'card number'|translate}}</ion-label>
+          <ion-input type="number" name="number" [(ngModel)]="appOrderService.orderDetails.cc_number"
+            placeholder="5555555555554444" required>
+          </ion-input>
+        </ion-item>
+        <ion-item lines=none>
+          <ion-label position="stacked">*{{'expire month'|translate}}</ion-label>
+          <ion-select name="expMonth" [(ngModel)]="appOrderService.orderDetails.cc_expiry_month" required>
+            <ion-select-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{n}}">{{n}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines=none>
+          <ion-label position="stacked">*{{'expire year'|translate}}</ion-label>
+          <ion-select name="expYear" [(ngModel)]="appOrderService.orderDetails.cc_expiry_year" required>
+            <ion-select-option *ngFor="let n of [2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033]"
+              value="{{n}}">{{n}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines=none>
+          <ion-label position="stacked">*{{'cvc'|translate}}</ion-label>
+          <ion-input type="number" name="cvc" placeholder="123" [(ngModel)]="appOrderService.orderDetails.cc_cvc"
+            required></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="bg-transparent ion-no-border">
+  <ion-toolbar class="bg-transparent">
+    <ion-button id="placeorder" class="font-bold ion-margin-horizontal" expand="block" color="primary"
+      (click)="addToOrder()">{{"place order"|translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

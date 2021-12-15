@@ -1,0 +1,40 @@
+ion-content {
+  .padding-20 {
+    padding: 0 12vw;
+  }
+  .top-text {
+    font-size: 25px;
+  }
+  ion-slides {
+    margin-top: 60px;
+    overflow: visible;
+    ion-slide {
+      span {
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        .image-box {
+          min-height: 360px;
+          position: relative;
+          ion-img {
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .button-grid {
+        position: absolute;
+        bottom: -130px;
+        width: 100%;
+        .upper-button {
+          width: 60% !important;
+          height: 40px !important;
+        }
+      }
+    }
+  }
+}

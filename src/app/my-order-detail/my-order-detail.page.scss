@@ -1,0 +1,23 @@
+ion-content {
+    //--background: white;
+    --padding-start: var(--app-padding-left-right);
+    --padding-end: var(--app-padding-left-right);
+}
+
+ion-list {
+    ion-item {
+        --padding-start: 0;
+    }
+}
+hr {
+    width: 100%;
+    border-top: 3px solid #ebeded;
+}
+span {
+    letter-spacing: -1px !important;
+}
+.amount {
+    ion-row {
+        line-height: 0.8;
+    }
+}

@@ -1,0 +1,236 @@
+<ion-header class="ion-no-border" color="primary" (click)="userTapHeader()">
+  <ion-toolbar color="primary">
+    <ion-icon class="header-icon ion-margin-end" slot="start" name="settings-outline" (click)="openSettingsModal()">
+    </ion-icon>
+    <ion-icon class="header-icon ion-margin-start" slot="end" name="bag-outline"
+      (click)="appCartService.openCartPage()"></ion-icon>
+    <ion-badge color="danger" class="cart-badge"><span class="center"
+        (click)="appCartService.openCartPage()">{{appCartService.cartTotalItems()}}</span>
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="setting-page">
+
+  <ion-grid class="ion-padding bg-primary user-data-container">
+    <ion-row class="row-outer">
+      <ion-avatar class="font-medium">
+        <img style="border-radius: 50%;" src="../../assets/download.png">
+      </ion-avatar>
+      <ion-col size="" class="ion-no-padding primary-contrat-color ion-align-items-center ion-text-capitalize">
+        <ion-label class="font-large color-light font-bold" *ngIf="appUserService.userIsLogedIn()">
+          {{appUserService.customerData.firstName}} {{appUserService.customerData.lastName}}
+        </ion-label>
+        <ion-label class="font-large color-light font-bold" *ngIf="!appUserService.userIsLogedIn()"
+          (click)="openLoginPage()">{{'sign in'|translate}} /
+          {{'register'|translate}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <span class="opacity-background"></span>
+    <!-- <ion-grid class="top-inner-grid ion-no-margin ion-margin-vertical margin-top-10 bg-transparent">
+      <ion-row>
+        <ion-col size="4">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="font-extra-large font-bold">0</ion-label>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"rewards"}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="4">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="font-extra-large font-bold">{{'0'|curency}}</ion-label>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"wallet"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="4">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="font-extra-large font-bold">0</ion-label>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"points"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+  </ion-grid>
+
+
+  <!-- absolute grid -->
+  <!-- <ion-grid class="membership-grid bg-dark color-light" [class.round-borders]="config.roundBordersBool">
+    <div class="padding-bottom-10">
+      <ion-item lines="none" class="bg-dark padding-horizontal-15">
+        <ion-label class="font-small font-bold ion-no-padding " color="warning">{{'Membership Benefits'|translate}}
+        </ion-label>
+        <ion-button fill="clear" color="warning" slot="end" class="color-light ion-no-margin">
+          <ion-icon size="small" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-row>
+        <ion-col class="iter padding-horizontal-10">
+          <ion-label class="font-small font-bold" color="warning">{{'New Member Gift'|translate}} <br>
+            <span class="avenir-next-bold">
+              50% {{'OFF'|translate}}
+            </span>
+          </ion-label><br>
+          <ion-label class="font-small font-bold" color="warning">{{'Member Gift Item'|translate}}<br>
+            <span class="avenir-next-bold">
+              50% {{'OFF'|translate}}
+            </span>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid> -->
+
+  <!-- <ion-grid class="daily-activity-grid ion-no-padding margin-top-10" [class.round-borders]="config.roundBordersBool">
+    <ion-row>
+      <ion-col class="variable-background-color">
+        <ion-item lines=none class="one-col">
+          <ion-avatar slot="end">
+            <img src="assets/calender.png">
+          </ion-avatar>
+          <ion-label>
+            <h3 class="font-small"> <ion-label color="dark">{{'check in'|translate}}</ion-label></h3>
+            <p class="font-extra-small">
+              <ion-label color="primary">{{'claim your 20 points'|translate}}</ion-label>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <div class="space-div"></div>
+      <ion-col>
+        <ion-item lines=none class="two-col">
+          <ion-avatar slot="end">
+            <img src="assets/gift.png">
+          </ion-avatar>
+          <ion-label>
+            <h3 class="font-small"><ion-label color="dark">{{'share'|translate}}</ion-label></h3>
+            <p class="font-extra-small">
+              <ion-label color="primary">{{'up to 1000 wallet'|translate}}</ion-label>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-grid class="offers-outer">
+    <ion-grid class="offers-grid orders-grid padding-bottom-20" [class.round-borders]="config.roundBordersBool">
+      <ion-item lines="none">
+        <ion-label class="font-small font-color-medium">{{'My Orders'|translate}}</ion-label>
+        <ion-button slot="end" fill="clear" class="font-extra-small font-color-medium" (click)="openPage('my-orders')">
+          {{ 'view all' |translate}} ></ion-button>
+      </ion-item>
+      <ion-row>
+        <ion-col size="6" (click)="openPage('my-orders')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="cube-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"In Progress"}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="6" (click)="openPage('my-orders')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="airplane-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"Delivered"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <!-- <ion-col size="4">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="star-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"Reviews"|translate}}</ion-label>
+          </ion-row>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
+
+
+  <ion-grid class="offers-outer margin-top-10">
+    <ion-grid class="offers-grid" [class.round-borders]="config.roundBordersBool">
+      <ion-item lines="none">
+        <ion-label class="font-small font-color-medium">{{'help & info'|translate}}</ion-label>
+      </ion-item>
+      <ion-row>
+        <ion-col size="3" class="margin-bottom-20" (click)="openPage('my-account')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="person-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"profile"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <!-- <ion-col size="3" class="margin-bottom-20" (click)="openPage('addresses')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="location-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"address book"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="margin-bottom-20" (click)="openPage('rewards')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="ticket-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"rewards"}}</ion-label>
+          </ion-row>
+        </ion-col> -->
+        
+        <!-- <ion-col size="3" class="margin-bottom-20" (click)="openPage('wallet')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="wallet-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-label class="font-small ion-text-capitalize">{{"wallet"|translate}}</ion-label>
+          </ion-row>
+        </ion-col> -->
+        <!-- <ion-col size="3" class="margin-bottom-20" (click)="openPage('points')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="cash-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"points"|translate}}</ion-label>
+          </ion-row>
+        </ion-col> -->
+        <ion-col size="3" class="margin-bottom-20" (click)="openPage('contact-us')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"feedback"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="margin-bottom-20" (click)="openPage('share')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="share-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"share"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="margin-bottom-20" (click)="openPage('rate')">
+          <ion-row class="ion-justify-content-center">
+            <ion-icon name="star-half-outline"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-text-center ion-text-capitalize">
+            <ion-label class="font-small">{{"rate us"|translate}}</ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="appUserService.customerData.customers_id!=null">
+  <ion-button expand="full" color="secondary" (click)="logOut()">{{'Log Out' | translate }}</ion-button>
+</ion-footer>

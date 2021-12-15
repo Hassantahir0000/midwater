@@ -1,0 +1,29 @@
+.inner-content {
+    .top-list {
+        padding: 10px;
+        ion-item {
+            --padding-start: 0;
+        }
+        ion-thumbnail {
+            --border-radius: 10%;
+        }
+    }
+    max-height: 80vh;
+    overflow: auto;
+    padding: 0 var(--app-padding-left-right);
+    .quantity-chip {
+        margin: 0;
+        padding: 0;
+        border: none;
+        ion-icon {
+            font-size: 35px;
+        }
+        ion-label {
+            padding: 0px 10px;
+            font-size: 20px;
+        }
+    }
+    ion-badge {
+        border: 1px solid var(--ion-text-color);
+    }
+}

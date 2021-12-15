@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'search'| translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #loginForm="ngForm" (ngSubmit)="getSearchData()">
+    <ion-searchbar [(ngModel)]="searchString" name="searchString" mode=ios class="font-small"
+      (ionInput)="onChangeKeyword($event)" placeholder="{{'What are you looking for?'|translate}}">
+    </ion-searchbar>
+  </form>
+  <ion-row class="ion-text-center ion-no-padding ion-padding padding-bottom-5" *ngIf="searchHistoryArray.length!=0">
+    <ion-col class="font-small ion-no-padding">{{'recent searches'|translate}}</ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding ion-padding" *ngIf="searchHistoryArray.length!=0">
+    <ion-col class="ion-no-padding">
+      <ion-badge color="light"
+        class="font-extra-small app-tex-color ion-margin-end margin-bottom-10 padding-horizontal-10 variable-background-color"
+        *ngFor="let s of searchHistoryArray" (click)="recentSearchClick(s)">
+        {{s}}
+      </ion-badge>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center ion-no-padding ion-padding padding-bottom-5" *ngIf="searchHistoryArray.length!=0">
+    <ion-col class="font-small ion-no-padding">
+      <ion-button class="font-small" fill="outline" size=small color="danger" (click)="removeAllHistory()">
+        {{'remove'|translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

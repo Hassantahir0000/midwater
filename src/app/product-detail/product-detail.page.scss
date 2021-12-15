@@ -1,0 +1,114 @@
+ion-label {
+    color: var(--ion-text-color);
+    --color: var(--ion-text-color);
+}
+ion-item {
+    --background: transparent;
+    ion-label {
+        margin-bottom: 0;
+    }
+}
+ion-content {
+    .heart-top {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 2;
+        ion-icon {
+            font-size: 20px;
+        }
+    }
+    --padding-start: var(--app-padding-left-right);
+    --padding-end: var(--app-padding-left-right);
+    ion-slide {
+        ion-img {
+            width: 100%;
+        }
+    }
+    .name-price-card {
+        padding: 10px 10px;
+        border-radius: 0%;
+        box-shadow: none;
+        margin-top: 3px;
+        ion-icon {
+            font-size: 20px;
+        }
+        ion-badge {
+            --padding-start: 7px;
+            --padding-end: 7px;
+            --padding-bottom: 3px;
+            --padding-top: 3px;
+            border-radius: 2px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+    }
+
+    .product-detail-custom-card {
+        padding: 0px 10px;
+        margin-top: 3px;
+        border-radius: 0%;
+        box-shadow: none;
+        ion-item {
+            --padding-start: 0;
+            --inner-padding-end: 0;
+            --padding-top: 0;
+            --padding-bottom: 0;
+        }
+        .single-review-start {
+            --min-height: none;
+            ion-avatar {
+                height: auto;
+            }
+        }
+        .quantity-chip {
+            margin: 0;
+            padding: 0;
+            border: none;
+            ion-icon {
+                font-size: 35px;
+            }
+            ion-label {
+                padding: 0px 10px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .product-quantity-card {
+        .label-col {
+            display: table;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            ion-label {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+    .stars-outer {
+        display: inline-block;
+        position: relative;
+        font-size: 15px;
+        &::before {
+            content: "\2606  \2606  \2606  \2606  \2606";
+            color: #ccc;
+        }
+        .stars-inner {
+            font-size: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &::before {
+                content: "\2605  \2605  \2605  \2605  \2605";
+                color: #f8ce0b;
+            }
+        }
+    }
+}

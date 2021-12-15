@@ -1,0 +1,19 @@
+app-app-progress-bar {
+    width: 100%;
+}
+
+.border-radius {
+    
+}
+.list-grid {
+    border-radius: 5px;
+    padding: 0;
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+    ion-row {
+        ion-icon {
+            width: 20px !important;
+            height: 40px !important;
+        }
+    }
+}

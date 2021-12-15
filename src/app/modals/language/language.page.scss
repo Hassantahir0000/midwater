@@ -1,0 +1,10 @@
+ion-item {
+    --min-height: auto;
+}
+
+ion-list {
+    padding: 0;
+    margin-top: 10px;
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+}

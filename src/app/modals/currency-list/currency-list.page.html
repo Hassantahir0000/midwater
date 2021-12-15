@@ -1,0 +1,13 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close-outline" (click)="dismiss()"></ion-icon>
+    <ion-title mode="ios">{{"Select Currency"|translate}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list [class.round-borders]="config.roundBordersBool">
+    <ion-item *ngFor="let v of currencyListArray" [color]="getSelectedColor(v)" (click)="updateCurrency(v)">
+      <ion-label class="font-medium font-bold">{{v.title}}({{v.code}})</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

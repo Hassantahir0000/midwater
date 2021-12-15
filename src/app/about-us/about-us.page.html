@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close-outline" (click)="dismiss()"></ion-icon>
+    <ion-title mode="ios">{{pagetitle}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center" *ngIf="shared.aboutUs==''">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-text class="ion-no-padding" *ngIf="shared.aboutUs!=''">
+    <p [innerHTML]="shared.aboutUs">
+    </p>
+  </ion-text>
+  <!--  <ion-list>
+    <ion-item (click)="openSite()" lines="full">
+      {{"official website"|translate}}
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+     <ion-item (click)="showModal('privacyPolicy')" lines="full">
+      {{'Privacy Policy'|translate}}
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item (click)="showModal('refundPolicy')" lines="full">
+      {{'Refund Policy'|translate}}
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item (click)="showModal('termServices')" lines="none">
+      {{'Term and Services'|translate}}
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item> 
+  </ion-list>
+  -->
+</ion-content>

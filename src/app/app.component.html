@@ -1,0 +1,96 @@
+<ion-app [class.green-theme]="config.appThemeString=='green'" [class.plum-theme]="config.appThemeString=='plum'"
+  [class.magnesium-theme]="config.appThemeString=='magnesium'" [class.salmon-theme]="config.appThemeString=='salmon'"
+  [class.blue-theme]="config.appThemeString=='blue'" [class.pink-theme]="config.appThemeString=='pink'"
+  [class.orange-theme]="config.appThemeString=='orange'" [class.maroon-theme]="config.appThemeString=='maroon'"
+  [class.cayanne-theme]="config.appThemeString=='cayanne'" [class.red-theme]="config.appThemeString=='red'"
+  [class.sea-theme]="config.appThemeString=='sea'" [class.sky-theme]="config.appThemeString=='sky'"
+  [class.grape-theme]="config.appThemeString=='grape'" [class.dark-theme]="config.darkModeBool==true"
+  [class.light-theme]="config.darkModeBool==false" [class.default-theme]="config.appThemeString=='default'"
+  [class.white-theme]="config.appThemeString=='white'" [class.theme15]="config.appThemeString=='theme15'"
+  [class.theme16]="config.appThemeString=='theme16'" [class.theme17]="config.appThemeString=='theme17'"
+  [class.theme18]="config.appThemeString=='theme18'"
+  [class.light-mode-plus-white-theme]="config.appThemeString=='white' && config.darkModeBool==false"
+  [class.dark-mode-plus-white-theme]="config.appThemeString=='white' && config.darkModeBool==true"
+  [class.light-mode-plus-black-theme]="config.appThemeString=='default' && config.darkModeBool==false"
+  [class.dark-mode-plus-black-theme]="config.appThemeString=='default' && config.darkModeBool==true">
+  <ion-split-pane contentId="main-content">
+    <ion-menu type="overlay" class="main-menu" menuId="mainMenu" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="avenir-next-bold ion-no-padding"> {{'Hello'| translate }} {{getTitleName()}} </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content class="variable-background-color">
+        <ion-list>
+
+         <ion-list>
+          <ion-item lines="none">
+            <ion-icon style="display: inline-block; font-size: 20px; vertical-align: middle;" name="grid"></ion-icon>
+            <span style="display: inline-block; font-size: 20px; vertical-align: middle; padding-left: 5px;">Categories</span>
+          </ion-item>
+         </ion-list>
+          
+          <div *ngFor="let c of appCategoriesService.categoriesArray">
+            <ion-item lines="none">
+              <ion-label class="font-medium font-bold" (click)="openCategory(c.id)">{{c.name}}
+              </ion-label>
+              <ion-icon class="font-small" [name]="getRightIcon(c.id)" slot="end"
+                *ngIf="appCategoriesService.checkCategoriesHasChild(c.id)" (click)="showHideCategoryList(c.id)">
+              </ion-icon>
+            </ion-item>
+            <div *ngIf="categoryListIsSelected(c.id)">
+              <ion-item lines="none" *ngFor="let sub of appCategoriesService.getCategories(c.id)"
+                class="app-background-color sub-cat padding-horizontal-10" [appAnimation]="'fade'">
+                <ion-label class="font-medium font-bold" (click)="openCategory(sub.id)">
+                  {{sub.name}}
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px !important;">
+            <ion-list>
+              <ion-item style="margin-bottom: 10px;" lines="none">
+                <ion-icon style="display: inline-block; font-size: 20px; vertical-align: middle;" name="logo-buffer"></ion-icon>
+                <span style="display: inline-block; font-size: 20px; vertical-align: middle; padding-left: 5px;">General</span>
+              </ion-item>
+              <ion-item  lines="none">
+                <ion-label class="font-medium font-bold" (click)="openTermsPage()">
+                 Contact Us
+                </ion-label>
+              </ion-item>
+              <ion-item  lines="none">
+                <ion-label class="font-medium font-bold" (click)="openAboutUsPage()">
+                 About Us
+                </ion-label>
+              </ion-item>
+              <ion-item  lines="none">
+                <ion-label class="font-medium font-bold" (click)="openRefundPolicyPage()">
+                 Spares and Services
+                </ion-label>
+              </ion-item>
+              <ion-item  lines="none">
+                <ion-label class="font-medium font-bold" (click)="openFeedback()">
+                 Feedback
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content">
+
+    </ion-router-outlet>
+  </ion-split-pane>
+
+
+  <ion-fab class="ion-padding-start margin50bottom" vertical="bottom" horizontal="top"
+    *ngIf="!config.appInProductionBool">
+    <ion-fab-button (click)="openDemoSettings()">
+      <ion-icon class="rotation-animation" name="settings"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-app>

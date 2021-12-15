@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios">
+      {{'my orders'|translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="pullRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="padding-top-10 bg-transparent" [class.round-borders]="config.roundBordersBool">
+    <ion-row>
+      <ion-segment class="app-segments" [(ngModel)]="segmentsTabs" mode=ios>
+        <ion-segment-button value="pending">
+          <ion-label class="font-extra-large ion-text-capitalize">{{'pending'|translate}}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="delivered">
+          <ion-label class="font-extra-large ion-text-capitalize">{{'delivered'| translate }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="cancelled">
+          <ion-label class="font-extra-large ion-text-capitalize">{{'cancelled'| translate }}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+  </ion-grid>
+  <app-no-record-found [data]="getFilteredOrders()" *ngIf="getFilteredOrders().length==0">
+  </app-no-record-found>
+  <div *ngFor="let order of getFilteredOrders()" class="margin-top-5" [class.round-borders]="config.roundBordersBool">
+    <div *ngIf="order==1">
+      <ion-card class="ion-no-border ion-no-margin">
+        <ion-grid>
+          <div class="ion-padding custom-skeleton">
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </div>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <div *ngIf="order!=1">
+      <ion-grid class="bottom-grid">
+        <ion-row>
+          <ion-col>
+            <ion-label>
+              <h3>{{'Order Id'|translate}}:{{order.order_id}} </h3>
+            </ion-label>
+            <ion-label>
+              <p class="font-small">{{'Placed on'|translate}} {{order.order_date}}</p>
+            </ion-label>
+            <!-- <ion-label>
+              <p class="font-color-light font-small">Delivered on 12/12/12 </p>
+            </ion-label> -->
+            <ion-label class="font-extra-small view-detail-button" (click)="showOrderDetail(order)">{{'View
+              Details'|translate}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-list class="bg-transparent">
+        <ion-item *ngFor="let p of order.order_detail" class="bg-transparent padding-bottom-10" lines="none">
+          <app-product-list-card page="myOrder" [data]="p"></app-product-list-card>
+        </ion-item>
+        <ion-item class="bg-transparent" lines="none">
+          <ion-label style="position: absolute; right: 10px;" class="font-large">
+            {{order.order_detail.length}} items total: <span class="color-primary">{{getOrderTotalPrice(order)}}</span>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+  <ion-infinite-scroll #infinite (ionInfinite)="getOrders()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

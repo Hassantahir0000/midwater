@@ -1,0 +1,14 @@
+ion-content {
+    --padding-end: var(--app-padding-left-right);
+    --padding-start: var(--app-padding-left-right);
+}
+
+
+*{
+    text-transform: none !important;
+}
+
+p{
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}

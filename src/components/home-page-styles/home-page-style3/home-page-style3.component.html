@@ -1,0 +1,30 @@
+<app-banner></app-banner>
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900 ion-no-margin">
+    {{"Newest "|translate}}
+  </ion-label>
+</ion-item>
+
+<app-products-slider filter="newest"></app-products-slider>
+<!-- IMAGE ONLY -->
+<!-- <ion-grid class="ion-no-padding ion-no-margin ion-margin-top">
+  <ion-img [appImageValidate]="70" [class.round-borders]="config.roundBordersBool" src="assets/Capture.png" (click)="shared.openShopPage()"></ion-img>
+</ion-grid> -->
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"Top Rated "|translate}}
+  </ion-label>
+</ion-item>
+
+<app-products-slider filter="topseller"></app-products-slider>
+
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"just for you"|translate}}
+  </ion-label>
+</ion-item>
+<app-home-products-list></app-home-products-list>

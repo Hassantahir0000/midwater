@@ -1,0 +1,36 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { PipesModule } from 'src/pipes/pipes.module';
+import { FormsModule } from '@angular/forms';
+import { AnimationDirectiveModule } from 'src/directives/appAnimation/animationDirective.module';
+import { ImageValidateDirectiveModule } from 'src/directives/imageValidate/imageValidate.module';
+import { HomePageStyle6Component } from './home-page-style6.component';
+import { bannerModule } from 'src/components/banner/banner.module';
+import { homeProductsListModule } from 'src/components/home-products-list/home-products-list.module';
+import { homeSegmentsModule } from 'src/components/home-segments/home-segments.module';
+import { productSliderModule } from 'src/components/products-slider/product-slider.module';
+import { categoryPageStyle1Module } from 'src/components/categories-page-styles/categories-page-style1/categories-page-style1.module';
+
+@NgModule({
+  declarations: [
+    HomePageStyle6Component
+  ],
+  exports: [
+    HomePageStyle6Component
+  ],
+  imports: [
+    IonicModule,
+    CommonModule,
+    PipesModule,
+    FormsModule,
+    AnimationDirectiveModule,
+    ImageValidateDirectiveModule,
+    productSliderModule,
+    homeProductsListModule,
+    bannerModule,
+    homeSegmentsModule,
+    categoryPageStyle1Module,
+  ],
+})
+export class HomePageStyle6Module { }

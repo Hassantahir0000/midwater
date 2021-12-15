@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close" (click)="dismiss(null)"></ion-icon>
+    <ion-title mode="ios">{{'Country'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)" name="search" #Searchbar placeholder="{{'search'|translate}}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="margin-top-10" [class.round-borders]="config.roundBordersBool">
+    <ion-item *ngFor="let item of items" (click)="selectCountry(item)">
+      {{ item.country_name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

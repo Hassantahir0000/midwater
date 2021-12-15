@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'rewards'| translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="pullRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-row class="ion-text-center ion-padding">
+    <ion-col class="font-extra-large-2 font-bold ion-padding">{{rewardPoints()}}<small
+        class="ion-text-capitalize font-bold-normal font-large points-text">{{'points'|translate}}</small></ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let p of pointsArray">
+      <ion-icon name="gift-outline" slot="start"></ion-icon>
+      <ion-label>{{p.description}}</ion-label>
+      <ion-note slot="end" color="danger">{{p.points}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" color="primary" class="ion-no-margin" (click)="redeemPoints()"
+    [disabled]="rewardPoints()==0">
+    {{ 'Redeem' | translate }}
+  </ion-button>
+</ion-footer>

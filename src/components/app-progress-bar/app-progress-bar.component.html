@@ -1,0 +1,42 @@
+<ul class="progress-indicator" *ngIf="config.appDirectionString=='ltr'">
+  <li [class.completed]="applyClassComplete(1)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'shipping'|translate}}
+  </li>
+  <li [class.completed]="applyClassComplete(2)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'payment'|translate}}
+  </li>
+  <li [class.completed]="applyClassComplete(3)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'review'|translate}}
+  </li>
+</ul>
+
+<ul class="progress-indicator" style="direction: ltr;" *ngIf="config.appDirectionString!='ltr'">
+  <li [class.completed]=" applyClassComplete(3)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'review'|translate}}
+  </li>
+  <li [class.completed]="applyClassComplete(2)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'payment'|translate}}
+  </li>
+  <li [class.completed]="applyClassComplete(1)">
+    <span class="bubble">
+      <!-- <div class="dot"></div> -->
+    </span>
+    {{'shipping'|translate}}
+  </li>
+
+</ul>

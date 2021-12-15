@@ -1,0 +1,14 @@
+.points-text {
+    padding-left: 3px;
+}
+
+ion-content {
+    --padding-start: var(--app-padding-left-right);
+    --padding-end: var(--app-padding-left-right);
+}
+
+ion-footer {
+    ion-button {
+        --border-radius: 0;
+    }
+}

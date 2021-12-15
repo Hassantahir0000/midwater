@@ -1,0 +1,8 @@
+.bottom-products-grid {
+    padding-left: calc(var(--app-padding-left-right) - 5px);
+    padding-right: calc(var(--app-padding-left-right) - 5px);
+}
+
+ion-badge {
+    border: 1px solid var(--ion-text-color);
+}

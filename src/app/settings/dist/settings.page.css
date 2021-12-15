@@ -1,0 +1,114 @@
+ion-content .offers-outer {
+  width: 100% !important;
+}
+ion-content .offers-grid {
+  background-color: var(--app-item-color);
+  margin-left: var(--app-padding-left-right);
+  margin-right: var(--app-padding-left-right);
+  -webkit-box-shadow: 0 1px 3px lightgrey;
+  box-shadow: 0 1px 3px lightgrey;
+  padding-top: 0 !important;
+}
+ion-content .offers-grid ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: 0;
+}
+ion-content .offers-grid ion-col {
+  padding: 0;
+}
+ion-content .offers-grid ion-col ion-row ion-icon {
+  font-size: 22px;
+}
+ion-content .offers-grid ion-col ion-row ion-label {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.user-data-container {
+  height: 125px;
+}
+.user-data-container .row-outer {
+  padding-left: 10px;
+}
+.user-data-container .row-outer ion-col {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.user-data-container .top-inner-grid {
+  box-shadow: none;
+  color: var(--ion-color-primary-contrast);
+  text-align: center;
+  padding-top: 0 !important;
+}
+.user-data-container .top-inner-grid ion-col {
+  padding: 0;
+}
+.user-data-container .top-inner-grid ion-col ion-row ion-label {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.orders-grid {
+  margin-top: -20px;
+}
+
+.membership-grid {
+  margin-top: -20px;
+  padding-top: 0 !important;
+  padding: 0;
+  width: 88%;
+}
+.membership-grid ion-row {
+  padding: 0;
+  width: 100%;
+}
+.membership-grid ion-col {
+  padding: 0;
+  padding-top: 0;
+}
+.membership-grid ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: 0;
+}
+.membership-grid ion-item ion-button {
+  font-size: 5px !important;
+  height: 6px !important;
+}
+
+.daily-activity-grid {
+  margin-left: var(--app-padding-left-right);
+  margin-right: var(--app-padding-left-right);
+}
+.daily-activity-grid ion-item {
+  --background: transparent;
+  padding: 10px 0;
+}
+.daily-activity-grid ion-item ion-avatar {
+  width: 30px;
+  height: 30px;
+}
+.daily-activity-grid ion-col {
+  padding: 0;
+  background-color: transparent;
+}
+.daily-activity-grid .one-col {
+  background-color: #f7ecd5;
+}
+.daily-activity-grid .two-col {
+  background-color: #c4dcf4;
+}
+.daily-activity-grid .space-div {
+  width: 5px;
+}
+
+.iter {
+  justify-content: space-around;
+  display: flex;
+}

@@ -1,0 +1,19 @@
+.bottom-products-grid {
+    padding-top: 0 !important;
+    app-product-card {
+        app-product-card-style1 {
+            display: none !important;
+            .right-fab {
+                display: none !important;
+            }
+        }
+    }
+}
+
+ion-fab {
+    visibility: hidden !important;
+}
+
+.right-fab[_ngcontent-dod-c155] {
+    display: none !important;
+}

@@ -1,0 +1,45 @@
+ion-content{
+    ion-grid{
+        ion-col{
+            ion-label{
+                span{
+                    color: red;
+                }
+            }
+        }
+        ion-item{
+            border: 1px solid #f1f3f2;
+            --box-shadow: none;
+            ion-textarea{
+               
+                --padding-start: 0;
+                --padding-end: 5px;
+                --padding-top: 5px;
+                font-size: 10px;
+            }
+            input{
+                padding-bottom: 0 !important;
+            }
+            ion-input{
+               
+                --padding-start: 0;
+                --padding-end: 5px;
+                --padding-top: 5px;
+                font-size: 10px;
+                .native-input{
+                    padding-bottom: 0 !important;
+                }
+            }
+        }
+    }
+    ion-button{
+        --border-radius: none;
+        --box-shadow: none;
+        text-transform: none;
+    }
+    .button_container{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+}

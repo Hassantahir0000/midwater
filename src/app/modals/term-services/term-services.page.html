@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close-outline" (click)="dismiss()"></ion-icon>
+    <ion-title mode="ios">{{pagetitle}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="font-size: calc(100% - 30%); text-transform: inherit !important;">
+  <div class="center" *ngIf="shared.termServices==''">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-text class="ion-no-padding" *ngIf="shared.termServices!=''">
+    <p [innerHTML]="shared.termServices">
+    </p>
+  </ion-text>
+</ion-content>

@@ -1,0 +1,40 @@
+app-app-progress-bar {
+    width: 100%;
+}
+ion-grid {
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+}
+hr {
+    width: 100%;
+    border-top: 3px solid #ebeded;
+}
+span {
+    letter-spacing: -1px !important;
+}
+.amount {
+    ion-row {
+        line-height: 0.8;
+    }
+}
+.button_container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    ion-button {
+        --box-shadow: 0;
+        text-transform: none !important;
+    }
+}
+
+.payment-fields {
+    padding: 0;
+    ion-item {
+        ion-input,ion-select {
+            border-radius: 5px;
+            background-color: var(--ion-background-color);
+            --padding-start: 10px;
+            margin-top: 10px;
+        }
+    }
+}

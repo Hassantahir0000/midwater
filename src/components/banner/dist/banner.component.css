@@ -1,0 +1,13 @@
+.content {
+  padding-left: var(--app-padding-left-right);
+  padding-right: var(--app-padding-left-right);
+}
+.content ion-slide ion-img {
+  width: 100%;
+}
+.content ion-slide ion-img img.no-image {
+  color: red;
+  font-size: 20px;
+  line-height: 200px;
+  text-align: center;
+}

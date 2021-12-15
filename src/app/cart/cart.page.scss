@@ -1,0 +1,42 @@
+ion-content {
+    --padding-start: var(--app-padding-left-right);
+    --padding-end: var(--app-padding-left-right);
+}
+ion-list {
+    ion-item {
+        --padding-start: 0;
+    }
+}
+.remove-coupon {
+    vertical-align: bottom;
+}
+ion-grid {
+    margin-top: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    ion-row {
+        ion-col {
+            ion-item {
+                --padding-start: 0;
+            }
+            ion-input {
+                border: 1px solid #cdd2de;
+                border-radius: 3px;
+            }
+            ion-button {
+                color: white;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+.bottom-products-grid {
+    padding-left: calc(var(--app-padding-left-right) - 5px);
+    padding-right: calc(var(--app-padding-left-right) - 5px);
+}
+
+app-product-list-card {
+    width: 100%;
+}

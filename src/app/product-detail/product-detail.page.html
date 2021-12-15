@@ -1,0 +1,215 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'product details'|translate}} </ion-title>
+    <ion-icon #icon2 class="header-icon" slot="end" name="bag-outline" (click)="appCartService.openCartPage()">
+    </ion-icon>
+    <ion-badge color="danger" class="cart-badge"><span class="center">{{appCartService.cartTotalItems()}}</span>
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <ion-spinner *ngIf="productDataIsEmpty()"></ion-spinner>
+  </div>
+  <div *ngIf="!productDataIsEmpty()">
+    <div class="heart-top">
+      <ion-icon name="heart" [color]="getHeartColor()" (click)="addRemoveWishProduct()"></ion-icon>
+    </div>
+    <ion-slides pager="true" [options]="sliderConfig" color="light" class="maze-bullet-slides margin-top-10"
+      [class.round-borders]="config.roundBordersBool">
+      <ion-slide *ngIf="dataJson.product_video_url" [appAnimation]="'fade'">
+        <video [class.round-borders]="config.roundBordersBool" autoplay controls style="width: 50%;">
+          <source [src]="sanitizer.bypassSecurityTrustResourceUrl(dataJson.product_video_url)">
+        </video>
+      </ion-slide>
+      <ion-slide [appAnimation]="'fade'">
+        <ion-img [appImageValidate]="150" [class.round-borders]="config.roundBordersBool"
+          [src]="config.imgMediumUrlString+dataJson.product_gallary.gallary_name"
+          (click)="zoomImage(config.imgMediumUrlString+dataJson.product_gallary.gallary_name)">
+        </ion-img>
+      </ion-slide>
+
+      <ion-slide *ngFor="let g of dataJson.product_gallary_detail" [appAnimation]="'fade'">
+        <ion-img [appImageValidate]="150" [class.round-borders]="config.roundBordersBool"
+          [src]="config.imgMediumUrlString+g.gallary_name"
+          (click)="zoomImage(config.imgMediumUrlString+g.gallary_name)">
+        </ion-img>
+      </ion-slide>
+
+    </ion-slides>
+    <ion-card class="bg-transparent name-price-card ion-no-margin ion-no-border"
+      [class.round-borders]="config.roundBordersBool">
+      <ion-row class="ion-no-margin">
+        <ion-col class="ion-no-padding">
+          <ion-badge color="danger" *ngIf="dataJson.product_discount_price!=0"
+            class="ion-margin-end font-extra-small round-borders-10 padding-vertical-5 padding-horizontal-15">
+            <!--  -->
+            {{'sale'|translate}}
+          </ion-badge>
+          <!--  -->
+          <ion-badge color="secondary" *ngIf="dataJson.is_featured"
+            class="ion-margin-end font-extra-small round-borders-10 padding-vertical-5 padding-horizontal-15">
+            {{'featured'|translate}}
+          </ion-badge>
+          <!-- <ion-badge color="success" class="ion-margin-end">{{'New'|translate}}</ion-badge> -->
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-10">
+        <ion-label class="font-large font-bold avenir-book">{{dataJson.detail[0].title}} </ion-label>
+      </ion-row>
+      <div *ngIf="dataJson.product_type=='variable'">
+        <ion-row class="ion-no-margin padding-top-5">
+          <ion-label class="font-extra-large font-bold" color="danger">{{getLowestProductPrice()|curency}}
+            - {{getHighestProductPrice()|curency}}
+          </ion-label>
+        </ion-row>
+      </div>
+      <div *ngIf="dataJson.product_type=='simple'">
+        <ion-row class="ion-no-margin padding-top-5" *ngIf="dataJson.product_discount_price==0">
+          <ion-label class="font-extra-large font-bold" color="danger">{{dataJson.product_price|curency}}</ion-label>
+        </ion-row>
+        <ion-row class="ion-no-margin padding-top-5" *ngIf="dataJson.product_discount_price!=0">
+          <ion-label class="font-extra-large font-bold" color="danger">{{dataJson.product_discount_price|curency}}
+          </ion-label>
+          <ion-label class="font-extra-large font-bold padding-horizontal-10 line-through" color="medium">
+            {{dataJson.product_price|curency}}
+          </ion-label>
+          <ion-badge color="danger" *ngIf="productDiscount()">{{productDiscount()}}</ion-badge>
+        </ion-row>
+      </div>
+      <ion-row class="ion-no-margin padding-top-5" *ngIf="dataJson.category.length!=0">
+        <ion-label class="font-medium font-bold ion-text-uppercase">{{'Categories'|translate}}: </ion-label>
+        <ion-label class="font-medium padding-horizontal-10" *ngFor="let c of dataJson.category">
+          {{c.category_detail.detail[0].name}}</ion-label>
+      </ion-row>
+      <!-- <ion-row class="ion-no-margin padding-top-5">
+        <ion-label class="font-medium font-bold ion-text-uppercase">{{'id'|translate}}: </ion-label>
+        <ion-label class="font-medium padding-horizontal-10">{{dataJson.product_id}}</ion-label>
+      </ion-row> -->
+      <ion-row class="ion-no-margin padding-top-5" *ngIf="dataJson.product_brand">
+        <ion-label class="font-medium font-bold">{{'brand'|translate}}</ion-label>
+        <ion-label class="font-medium padding-horizontal-10">{{dataJson.product_brand.brand_name}}
+        </ion-label>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-10">
+        <ion-label class="font-medium font-bold" color="primary">{{'product details'|translate}}</ion-label>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-10 font-medium">
+        <div [innerHTML]="dataJson.detail[0].desc"></div>
+      </ion-row>
+    </ion-card>
+    <!-- =================================================================================================================== -->
+    <ion-card class="product-detail-custom-card ion-no-margin ion-no-border"
+      [class.round-borders]="config.roundBordersBool" *ngIf="dataJson.product_type=='variable'">
+      <!--  -->
+      <ion-item lines="none" mode=ios button (click)="openProductAttributesModal()" detail class="ion-no-margin">
+        <ion-label class=" font-medium ion-no-margin font-large font-bold">
+          {{'choose options'|translate}}
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <!-- =================================================================================================================== -->
+    <ion-card class="bg-transparent product-detail-custom-card product-quantity-card ion-no-margin ion-no-border"
+      *ngIf="dataJson.product_type=='simple'" [class.round-borders]="config.roundBordersBool">
+      <ion-item lines=none>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-margin">
+            <ion-col class="ion-text-start ion-no-padding label-col">
+              <ion-label class=" font-extra-large font-bold avenir-book" color="primary">
+                {{'quantity'|translate}}
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-text-end ion-no-margin">
+              <ion-label class="width-full font-large padding-vertical-10">
+                <ion-chip outline=true [color]="(config.darkModeBool)?'light':'primary'"
+                  class="quantity-chip variable-background-color">
+                  <ion-icon name="remove-circle" (click)="quantityMinus()" color="primary"></ion-icon>
+                  <ion-label class="font-bold">{{quantityNumber}}</ion-label>
+                  <ion-icon name="add-circle" (click)="quantityPlus()" color="primary"></ion-icon>
+                </ion-chip>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card>
+
+    <!-- =================================================================================================================== -->
+    <ion-card class="bg-transparent product-detail-custom-card ion-no-margin ion-no-border"
+      [class.round-borders]="config.roundBordersBool">
+      <ion-row class="ion-no-margin padding-top-10">
+        <ion-col class="ion-no-padding">
+          <ion-label class="font-medium font-bold" color="primary">{{'reviews'|translate}}</ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end ion-no-padding">
+          <ion-label class="font-extra-small font-bold ion-text-end" color="medium" (click)="openReviewsPage()">{{'see
+            all'|translate}}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-5">
+        <ion-label class="font-medium font-bold">{{dataJson.detail[0].title}}</ion-label>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-5">
+        <div class="stars-outer">
+          <div class="stars-inner" [style.width]="(dataJson.product_rating*20)+'%'"></div>
+        </div>
+      </ion-row>
+      <ion-row class="ion-no-margin padding-top-5">
+        <ion-label class="font-medium font-bold" *ngIf="dataJson.product_rating==null" color="medium">{{0|
+          number:'1.2-2'}}({{dataJson.reviews.length}} {{'reviews'|translate}})</ion-label>
+        <ion-label class="font-medium font-bold" *ngIf="dataJson.product_rating!=null" color="medium">
+          {{dataJson.product_rating|
+          number:'1.2-2'}}({{dataJson.reviews.length}} {{'reviews'|translate}})</ion-label>
+      </ion-row>
+
+      <ion-item lines="none" *ngIf="dataJson.reviews.length!=0">
+        <ion-avatar slot="start">
+          <img src="assets/user.png">
+        </ion-avatar>
+        <ion-label class="ion-no-margin">
+          <h2 class="font-medium">
+            <ion-text color="medium">{{dataJson.reviews[0].comment}}</ion-text>
+          </h2>
+          <h3>
+            <div class="stars-outer font-small">
+              <div class="stars-inner font-small" [style.width]="(dataJson.reviews[0].rating*20)+'%'"></div>
+            </div>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-card class="bg-transparent product-recommended-card product-detail-custom-card ion-no-margin no-padding"
+      [class.round-borders]="config.roundBordersBool" *ngIf="relatedProductsArray.length!=0">
+      <div lines="none" class="bg-transparent ion-margin-vertical padding-horizontal-10">
+        <ion-label class="avenir-next-bold font-large">
+          {{"you might also like"|translate}}
+        </ion-label>
+      </div>
+
+      <ion-row>
+        <ion-col size="6" *ngFor="let p of relatedProductsArray">
+          <app-product-card [data]="p"></app-product-card>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="!productDataIsEmpty()">
+  <ion-toolbar>
+    <ion-button expand="block" *ngIf="!enableOutOFStockButtonBool"
+      class="ion-no-margin ion-margin-horizontal ion-margin-bottom" color=primary (click)="addToCartButton()">
+      {{'add to cart'|translate}}
+    </ion-button>
+
+    <ion-button expand="block" *ngIf="enableOutOFStockButtonBool"
+      class="ion-no-margin ion-margin-horizontal ion-margin-bottom" color=danger>
+      {{'out of stock'|translate}}
+    </ion-button>
+  </ion-toolbar>
+
+</ion-footer>

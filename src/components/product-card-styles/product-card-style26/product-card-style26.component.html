@@ -1,0 +1,62 @@
+<ion-card *ngIf="data!=1">
+  <div class="card_image_container">
+    <ion-img [appImageValidate]="70" src="{{config.imgThumbnailUrlString+data.product_gallary.gallary_name}}"
+      (click)="openProductPage()">
+    </ion-img>
+    <ion-fab vertical="top" horizontal="start" slot="fixed" class="left-fab">
+      <ion-badge *ngIf="data.product_discount_price!=0" color="danger" class="font-extra-small font-bold">
+        {{'sale'|translate}}</ion-badge>
+      <ion-badge *ngIf="data.is_featured!=0" color="dark" class="font-extra-small font-bold">{{'featured'|translate}}
+      </ion-badge>
+    </ion-fab>
+  </div>
+  <ion-card-content class="bold font-medium truncate ion-no-padding padding-horizontal-5 padding-top-5 ion-text-center">
+    <ion-text (click)="openProductPage()"> {{data.detail[0].title}}</ion-text>
+    <div class="padding-bottom-5 padding-horizontal-5 ion-text-center" *ngIf="data.product_type=='simple'">
+      <ion-chip outline=true [color]="(config.darkModeBool)?'light':'primary'" class="quantity-chip ion-no-margin"
+        *ngIf="!outOfStock">
+        <ion-icon name="remove-outline" (click)="quantityMinus()"></ion-icon>
+        <ion-label class="font-bold font-small">{{getQuantity()}}</ion-label>
+        <ion-icon name="add-outline" (click)="quantityPlus()"></ion-icon>
+      </ion-chip>
+      <ion-label class="font-medium ion-text-capitalize" color="danger" *ngIf="outOfStock">{{'out of stock'|translate}}
+      </ion-label>
+    </div>
+    <!-- <div *ngIf="data.product_type=='variable'">
+      <ion-row class="ion-no-margin">
+        <ion-col class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5 ion-text-center">
+          <ion-text color="danger">{{data.product_combination[0].price|curency}}
+            - {{data.product_combination[data.product_combination.length-1].price|curency}}</ion-text>
+        </ion-col>
+      </ion-row>
+    </div> -->
+    <!-- *ngIf="data.product_type=='simple'" -->
+    <div>
+      <ion-row *ngIf="data.product_discount_price!=0">
+        <ion-col class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5 ion-text-center">
+          <ion-text color="danger">{{data.product_discount_price|curency}}</ion-text>
+        </ion-col>
+        <ion-col class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5 ion-text-center">
+          <ion-text class="line-through">{{data.product_price|curency}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="data.product_discount_price==0">
+        <ion-col class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5 ion-text-center">
+          <ion-text color="danger">{{data.product_price|curency}}</ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card-content>
+
+</ion-card>
+
+<ion-card *ngIf="data==1">
+  <div class="margin-5">
+    <ion-skeleton-text animated class="borders-radius-0 ion-no-margin" style="height: 150px">
+    </ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 90%">
+    </ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 50%">
+    </ion-skeleton-text>
+  </div>
+</ion-card>

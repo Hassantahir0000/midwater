@@ -1,0 +1,34 @@
+<ion-card class="ion-no-border ion-no-margin" *ngIf="data!=1">
+  <ion-grid class="ion-no-padding margin-top-10">
+    <ion-row>
+      <ion-col size="3" class="icon_container">
+        <div class="card_image_container">
+          <ion-icon name="location-outline"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col size="7">
+        <ion-card-content class="font-bold">
+          <p class="font-large">{{data.text1}}</p>
+          <ion-card-subtitle class="font-medium">{{data.text2}}</ion-card-subtitle>
+          <ion-card-subtitle class="font-medium">{{data.text3}}</ion-card-subtitle>
+        </ion-card-content>
+      </ion-col>
+      <ion-col size="2" class="icon_container">
+        <div class="card_image_container" *ngIf="data.selected">
+          <ion-icon name="checkmark-outline" color="success"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-card class="ion-no-border ion-no-margin" *ngIf="data==1">
+  <ion-grid>
+    <div class="ion-padding custom-skeleton">
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    </div>
+  </ion-grid>
+</ion-card>

@@ -1,0 +1,15 @@
+{
+  "appId": "com.midwater.app",
+  "appName": "Midwater",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "showSpinner": true,
+      "launchShowDuration": 10000
+    }
+  },
+  "cordova": {}
+}

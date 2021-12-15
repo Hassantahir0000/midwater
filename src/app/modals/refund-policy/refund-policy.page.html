@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close-outline" (click)="dismiss()"></ion-icon>
+    <ion-title mode="ios">{{pagetitle}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center" *ngIf="shared.refundPolicy==''">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-text class="ion-no-padding" *ngIf="shared.refundPolicy!=''">
+    <p [innerHTML]="shared.refundPolicy">
+    </p>
+  </ion-text>
+</ion-content>

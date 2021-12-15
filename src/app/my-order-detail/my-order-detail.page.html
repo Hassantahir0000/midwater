@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios">
+      {{'order detail'| translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <ion-spinner *ngIf="dataIsEmpty()"></ion-spinner>
+  </div>
+  <div *ngIf="!dataIsEmpty()" class="margin-top-5">
+    <ion-list class="bg-transparent">
+      <ion-item class="bg-transparent padding-top-10" lines="none" *ngFor="let p of order.order_detail">
+        <app-product-list-card page="myOrder" [data]="p"></app-product-list-card>
+      </ion-item>
+    </ion-list>
+    <ion-grid class="ion-no-padding margin-top-5" [class.round-borders]="config.roundBordersBool">
+      <ion-row class="ion-padding-vertical variable-background-color">
+        <ion-col class="ion-no-padding">
+          <app-address-info-card [data]="getShippingAddressData()"></app-address-info-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="ion-no-padding margin-top-5" [class.round-borders]="config.roundBordersBool">
+      <ion-row class="ion-padding-vertical variable-background-color">
+        <ion-col class="ion-no-padding">
+          <app-address-info-card [data]="getBillingAddressData()"></app-address-info-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-padding-vertical margin-top-5 variable-background-color"
+      [class.round-borders]="config.roundBordersBool">
+      <ion-row *ngIf="order.shipping_method">
+        <ion-col class="padding-horizontal-10 ion-text-capitalize">
+          <ion-label><span>{{"shipping method"|translate}}:</span></ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end padding-horizontal-10"><span style="color: red;">{{order.shipping_method}}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="order.payment_method">
+        <ion-col class="padding-horizontal-10 ion-text-capitalize">
+          <ion-label><span>{{"payment method"|translate}}:</span></ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end padding-horizontal-10"><span style="color: red;">{{order.payment_method}}</span>
+        </ion-col>
+      </ion-row>
+      <!-- 2nd row -->
+      <ion-row *ngIf="order.shipping_cost">
+        <ion-col class="padding-horizontal-10 ion-text-capitalize">
+          <ion-label><span>{{"estimated shipping"|translate}}:</span></ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end padding-horizontal-10"><span>{{order.shipping_cost|curency}}</span>
+        </ion-col>
+      </ion-row>
+      <!-- 3rd row -->
+      <ion-row *ngIf="order.total_tax">
+        <ion-col class="padding-horizontal-10 ion-text-capitalize">
+          <ion-label><span>{{"tax"|translate}}:</span></ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end padding-horizontal-10 "><span>{{order.total_tax|curency}}</span>
+        </ion-col>
+      </ion-row>
+      <!-- 4th row -->
+      <ion-row>
+        <ion-col class="padding-horizontal-10 ion-text-capitalize">
+          <ion-label><span>{{"order total"|translate}}:</span></ion-label>
+        </ion-col>
+        <ion-col class="ion-text-end padding-horizontal-10"><span
+            style="color: red;">{{order.order_price|curency}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

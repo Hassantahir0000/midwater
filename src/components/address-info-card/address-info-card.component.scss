@@ -1,0 +1,36 @@
+ion-card {
+    box-shadow: none;
+    ion-grid {
+        padding: 0;
+        ion-row {
+            .icon_container {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                .card_image_container {
+                    ion-icon {
+                        height: 25px !important;
+                        width: 25px !important;
+                        color: #cdd2de;
+                    }
+                }
+            }
+            ion-col {
+                padding: 0;
+                ion-card-content {
+                    padding-top: 0 !important;
+                    padding-left: 0 !important;
+                    padding-bottom: 10px !important;
+                    padding-right: 0 !important;
+                    p {
+                        line-height: 1.5;
+                    }
+                    ion-card-subtitle {
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+}

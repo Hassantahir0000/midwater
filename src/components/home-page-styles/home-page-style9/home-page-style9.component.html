@@ -1,0 +1,44 @@
+<div class="ion-no-padding top-categories ion-margin-vertical">
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let c of appCategoriesService.categoriesArray" (click)="onClickCategory(c)">
+      <div>
+        <ion-img [appImageValidate]="70" [src]="config.imgThumbnailUrlString+c.gallary">
+        </ion-img>
+        <ion-text>
+          <span class="font-small ion-text-capitalize truncate">{{c.name}}</span>
+        </ion-text>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</div>
+
+<app-banner></app-banner>
+<app-home-segments></app-home-segments>
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"featured"|translate}}
+  </ion-label>
+</ion-item>
+<app-products-slider filter="featured"></app-products-slider>
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"year end sale"|translate}}
+  </ion-label>
+</ion-item>
+
+<!-- IMAGE ONLY -->
+<ion-grid class="ion-no-padding ion-no-margin">
+  <ion-img [appImageValidate]="70" [class.round-borders]="config.roundBordersBool" src="assets/Capture.png" (click)="shared.openShopPage()"></ion-img>
+</ion-grid>
+
+
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"just for you"|translate}}
+  </ion-label>
+</ion-item>
+<app-home-products-list></app-home-products-list>

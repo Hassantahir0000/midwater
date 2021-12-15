@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'Ratings & Reviews'|translate}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="review-page">
+  <ion-refresher slot="fixed" (ionRefresh)="pullRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="rating-gird">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="5">
+        <h1>{{average| number:'1.2-2'}}
+          <ion-icon name="star"></ion-icon>
+        </h1>
+        <h3>{{reviewsArray.length}} {{'rating'|translate}}</h3>
+      </ion-col>
+      <ion-col size="7">
+        <ul>
+          <li>5
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r5+'%'" style="background-color:green;"></span>
+          </li>
+          <li>4
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r4+'%'" style="background-color:lightgreen;"></span>
+          </li>
+          <li>3
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r3+'%'" style="background-color:yellow;"></span>
+          </li>
+          <li>2
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r2+'%'" style="background-color:orange;"></span>
+          </li>
+          <li>1
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r1+'%'" style="background-color:darkorange;"></span>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="primary" class="font-small" (click)="openReviewsPage()">{{'Rate and write a
+          review'|translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-no-record-found [data]="reviewsArray" *ngIf="reviewsArray.length==0 && !httpLoading">
+  </app-no-record-found>
+  <ion-list class="rating-users" *ngIf="reviewsArray.length!=0">
+
+    <ion-item *ngFor="let r of reviewsArray; let i = index">
+      <ion-avatar slot="start">
+        <img src="assets/user.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{r.customer.customer_first_name}} {{r.customer.customer_last_name}}</h2>
+        <h3>{{r.created_at|date:'dd-MM-yyyy'}}</h3>
+        <p id="{{ 'a' + i }}">
+          {{r.comment}}
+        </p>
+
+        <ion-badge class="ion-text-lowercase">
+          <ion-text id="{{ 'more' + i }}" (click)="showHideContent(i,'show')">{{"more"|translate}}
+          </ion-text>
+          <ion-text id="{{ 'less' + i }}" class="less" (click)="showHideContent(i,'hide')">
+            {{"less"|translate}}</ion-text>
+        </ion-badge>
+      </ion-label>
+      <div class="stars-outer" slot="end">
+        <div class="stars-inner" [style.width]="(r.rating*20)+'%'"></div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll #infinite (ionInfinite)="getProductReviews()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

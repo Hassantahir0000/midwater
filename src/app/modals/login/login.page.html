@@ -1,0 +1,164 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-capitalize">
+  <ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center margin-top-20 margin-bottom-10 ">
+          <h1 class="font-extra-large" *ngIf="topSegmentsString=='signIn'">{{'welcome back'| translate }}!
+          </h1>
+          <h1 class="font-extra-large" *ngIf="topSegmentsString=='signUp'">{{'create a new account'|
+            translate }}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row class="margin-top-5">
+        <ion-segment [(ngModel)]="topSegmentsString">
+          <ion-segment-button value="signIn">
+            <ion-label class="font-extra-large ion-text-capitalize">{{'sign in'| translate }}</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="signUp">
+            <ion-label class="font-extra-large ion-text-capitalize">{{'sign up'| translate }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <div *ngIf="topSegmentsString=='signIn'">
+        <!--------------------------------------- for login section --------------------------------------- -->
+        <!-- *ngIf="config.enableEmailLoginBool" -->
+        <form #loginForm="ngForm" class="form" (ngSubmit)="login()">
+          <ion-item lines="none">
+            <ion-icon name="mail-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="email@example.com" type="email" email
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="formData.email"
+              required></ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"invalid email"|translate}}</ion-text>
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="{{'password'| translate }}" type="password" name="password"
+              [(ngModel)]="formData.password" required></ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"required"|translate}}</ion-text>
+          <ion-item lines="none">
+
+            <ion-label class="font-large"></ion-label>
+            <ion-button fill="clear" class="ion-no-padding ion-text-capitalize" size="small"
+              (click)="openForgetPasswordPage()">{{'forgot your password'|
+              translate }}?
+            </ion-button>
+          </ion-item>
+          <ion-item lines="none" *ngIf="errorMessage!=''">
+            <ion-text color="danger" class="font-small">
+              {{errorMessage| translate}}
+            </ion-text>
+          </ion-item>
+          <ion-button expand="block" class="font-bold ion-text-capitalize" [disabled]="!loginForm.form.valid"
+            type="submit" color="primary">{{'sign in'|
+            translate
+            }}</ion-button>
+        </form>
+
+      </div>
+      <div *ngIf="topSegmentsString=='signUp'">
+        <!--------------------------------------- for sign up section --------------------------------------- -->
+        <!-- *ngIf="config.enableEmailLoginBool" -->
+        <form #signUpForm="ngForm" class="form" (ngSubmit)="signUp()">
+
+          <ion-item lines="none">
+            <ion-icon name="person-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="{{'first name'|translate}}" type="text" name="first_name"
+              [(ngModel)]="signUpformData.first_name" required>
+            </ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"required"|translate}}</ion-text>
+
+          <ion-item lines="none">
+            <ion-icon name="person-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="{{'last name'|translate}}" type="text" name="last_name"
+              [(ngModel)]="signUpformData.last_name" required>
+            </ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"required"|translate}}</ion-text>
+
+          <ion-item lines="none">
+            <ion-icon name="mail-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="email@example.com" type="email" email
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="signUpformData.email"
+              required>
+            </ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"invalid email"|translate}}</ion-text>
+
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="{{'password'| translate }}" type="password" name="password"
+              [(ngModel)]="signUpformData.password" required></ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"required"|translate}}</ion-text>
+
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" size="small"></ion-icon>
+            <ion-input class="font-large" placeholder="{{'confirm password'| translate }}" type="password"
+              name="confirm_password" [(ngModel)]="signUpformData.confirm_password" required></ion-input>
+          </ion-item>
+          <ion-text class="helptext font-small" color=danger> * {{"required"|translate}}</ion-text>
+
+          <!-- <ion-item lines="none">
+            <ion-label class="font-large"></ion-label>
+            <ion-button fill="clear" class="ion-no-padding ion-text-capitalize" size="small">{{'forgot your password'|
+              translate }}?
+            </ion-button>
+          </ion-item> -->
+          <ion-item lines="none" *ngIf="errorMessage!=''">
+            <ion-text color="danger" class="font-small">
+              {{errorMessage| translate}}
+            </ion-text>
+          </ion-item>
+          <ion-button expand="block" class="font-bold ion-text-capitalize" [disabled]="!signUpForm.form.valid"
+            type="submit" color="primary">{{'sign up'|translate}}</ion-button>
+        </form>
+      </div>
+      <!-- bottom section -->
+      <!-- <ion-row class="padding-top-10 margin-top-60 icons ion-margin-bottom">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button fill="clear" class="ion-no-padding font-small" size="small">---- {{'or sign in
+            with'| translate }}
+            ----</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-margin-top social-login">
+        <ion-col size="12">
+          <div class="center container">
+            <div class="ion-text-center ion-padding-horizontal" (click)="facebookLogin()">
+              <ion-icon size="large" name="logo-facebook"></ion-icon><br>
+              <ion-label class="font-small">facebook</ion-label>
+            </div>
+            <div class="ion-text-center ion-padding-horizontal" (click)="googleLogin()">
+              <ion-icon size="large" name="logo-google"></ion-icon><br>
+              <ion-label class="font-small">google</ion-label>
+            </div>
+            <div class="ion-text-center ion-padding-horizontal" (click)="openAppleSignIn()"
+              *ngIf="config.currentPlatfromString=='ios'">
+              <ion-icon size="large" name="logo-apple"></ion-icon><br>
+              <ion-label class="font-small">apple</ion-label>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row> -->
+
+      <ion-row class="ion-text-center ion-justify-content-center margin-top-60 privacy-policy">
+        <ion-col size="9" class="ion-text-center">
+          <ion-label class=" font-medium">
+            {{'we keep your data safe, for furthur assistance please refer to our'| translate
+            }}<ion-text color="primary"> {{'privacy policy'| translate
+              }}</ion-text>.
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-grid>
+</ion-content>

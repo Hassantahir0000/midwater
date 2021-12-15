@@ -1,0 +1,13 @@
+<ion-grid class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col size="6" *ngFor="let c of categoriesArray" class="ion-no-padding" [appAnimation]="'fade'">
+      <ion-card (click)="clickCategory(c)" class="ion-no-margin">
+        <ion-img [appImageValidate]="70" [src]="config.imgThumbnailUrlString+c.gallary" [class.round-borders]="config.roundBordersBool">
+        </ion-img>
+        <ion-card-header class="ion-text-center ion-no-padding padding-vertical-5 center">
+          <ion-card-title class="font-extra-large ion-text-capitalize avenir-next-bold">{{c.name}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,684 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: "avenir-black";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./assets/fonts/Montserrat/Montserrat-Black.ttf");
+}
+
+@font-face {
+    font-family: "avenir-book";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./assets/fonts/Montserrat/Montserrat-Light.ttf");
+}
+
+@font-face {
+    font-family: "avenir-roman";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./assets/fonts/Montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "avenir-next-bold";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./assets/fonts/Montserrat/Montserrat-Bold.ttf");
+}
+// app vaiables
+:root {
+    --app-padding-left-right: 10px;
+}
+
+.avenir-black {
+    font-family: "avenir-black" !important;
+}
+.avenir-book {
+    font-family: "avenir-book" !important;
+}
+.avenir-roman {
+    font-family: "avenir-roman" !important;
+}
+.avenir-next-bold {
+    font-family: "avenir-next-bold" !important;
+}
+:root[mode="ios"],
+:root[mode="md"] {
+    --ion-font-family: "avenir-book" !important;
+    font-family: "avenir-book" !important;
+}
+
+ion-searchbar {
+    padding: 16px !important;
+    --background: var(--app-item-color) !important;
+    --box-shadow: none !important;
+    input {
+        font-family: "avenir-roman" !important;
+        font-size: 11px !important;
+        font-weight: 600;
+    }
+}
+
+ion-header {
+    ion-toolbar {
+        --padding-start: 15px;
+        --padding-end: 15px;
+        ion-title {
+            font-family: "avenir-roman" !important;
+            font-size: 15px !important;
+        }
+        .header-icon {
+            font-size: var(--app-icon-font-size);
+        }
+    }
+
+    .cart-badge {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        z-index: 99;
+        border-radius: 100%;
+        min-width: 18px;
+        min-height: 18px;
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+        line-height: unset;
+    }
+}
+ion-content {
+    .app-segments {
+        --background: transparent;
+        ion-segment-button {
+            --border-radius: 25px;
+            --background: var(--app-item-color);
+            --background-checked: transparent;
+            --indicator-color: var(--ion-color-primary);
+
+            --color-checked: var(--ion-color-primary-contrast);
+
+            margin-left: 5px;
+            margin-right: 5px;
+            ion-label {
+                color: unset;
+                --color: unset;
+            }
+        }
+    }
+}
+.variable-background-color {
+    background-color: var(--app-item-color);
+    --background: var(--app-item-color);
+}
+.app-background-color {
+    background-color: var(--ion-background-color);
+    --background: var(--ion-background-color);
+}
+.app-tex-color {
+    color: var(--ion-text-color);
+    --color: var(--ion-text-color);
+}
+
+.intro-slides {
+    .swiper-pagination-bullet {
+        width: 25vw !important;
+        height: 5px !important;
+        border-radius: 10px !important;
+        opacity: 1 !important;
+        bottom: 0px !important;
+    }
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.round-borders {
+    border-radius: 10px !important;
+    --border-radius: 10px !important;
+    overflow: hidden;
+}
+.borders-radius-0 {
+    border-radius: 0px !important;
+    --border-radius: 0px !important;
+}
+.round-borders-10 {
+    border-radius: 10px !important;
+    --border-radius: 10px !important;
+    overflow: hidden;
+}
+
+ion-button {
+    --border-radius: 15px !important;
+    //height: 30px;
+}
+
+.product-attributes-modal .modal-wrapper {
+    &.bottom {
+        align-items: flex-end;
+    }
+
+    position: absolute;
+    bottom: 0;
+    --height: auto;
+
+    .ion-page {
+        position: relative;
+        display: block;
+        contain: content;
+        //background-color: var(--app-item-color);
+    }
+}
+
+.font-extra-large-20 {
+    font-size: 20px !important;
+}
+
+.font-extra-large-2 {
+    font-size: 30px !important;
+}
+.font-large {
+    font-size: 14px !important;
+}
+.font-medium {
+    font-size: 12px !important;
+}
+.font-small {
+    font-size: 11px !important;
+}
+
+.font-extra-small {
+    font-size: 9px !important;
+}
+
+.font-bold-normal {
+    font-weight: normal;
+}
+.font-bold-500 {
+    font-weight: 500;
+}
+.font-bold {
+    font-weight: 600;
+}
+.font-bold-900 {
+    font-weight: 900;
+}
+
+.padding-15 {
+    padding: 15px !important;
+    --padding: 15px !important;
+}
+//=============================================
+.padding-5 {
+    padding: 5px;
+    --padding: 5px;
+}
+.padding-top-5 {
+    padding-top: 5px !important;
+    --padding-top: 5px !important;
+}
+.padding-left-5 {
+    padding-left: 5px !important;
+    --padding-start: 5px !important;
+}
+.padding-right-5 {
+    padding-right: 5px !important;
+    --padding-end: 5px !important;
+}
+.padding-horizontal-5 {
+    padding-left: 5px !important;
+    --padding-left: 5px !important;
+    padding-right: 5px !important;
+    --padding-right: 5px !important;
+}
+.padding-vertical-5 {
+    padding-top: 5px !important;
+    --padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    --padding-bottom: 5px !important;
+}
+.padding-bottom-5 {
+    padding-bottom: 5px !important;
+    --padding-bottom: 5px !important;
+}
+.padding-bottom-20 {
+    padding-bottom: 20px !important;
+    --padding-bottom: 20px !important;
+}
+//============================================
+.padding-10 {
+    padding: 10px !important;
+    --padding: 10px !important;
+}
+
+.padding-top-10 {
+    padding-top: 10px !important;
+    --padding-top: 10px !important;
+}
+.padding-left-10 {
+    padding-left: 10px !important;
+    --padding-start: 10px !important;
+}
+.padding-right-10 {
+    padding-right: 10px !important;
+    --padding-end: 10px !important;
+}
+.padding-horizontal-10 {
+    padding-left: 10px !important;
+    --padding-left: 10px !important;
+    padding-right: 10px !important;
+    --padding-right: 10px !important;
+}
+.padding-vertical-10 {
+    padding-top: 10px !important;
+    --padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    --padding-bottom: 10px !important;
+}
+.padding-bottom-10 {
+    padding-bottom: 10px !important;
+    --padding-bottom: 10px !important;
+}
+
+.padding-horizontal-15 {
+    padding-left: 15px !important;
+    --padding-left: 15px !important;
+    padding-right: 15px !important;
+    --padding-right: 15px !important;
+}
+//================================= aroos code
+
+.padding-vertical-0 {
+    padding-top: 0px !important;
+    --padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    --padding-bottom: 0px !important;
+}
+.padding-horizontal-20 {
+    padding-left: 20px !important;
+    --padding-left: 20px !important;
+    padding-right: 20px !important;
+    --padding-right: 20px !important;
+}
+.no-padding {
+    padding: 0 !important;
+    --padding: 0 !important;
+}
+.no-padding-top {
+    padding-top: 0 !important;
+    --padding-top: 0 !important;
+}
+.no-margin {
+    margin: 0 !important;
+    --margin: 0 !important;
+}
+.padding-top-0 {
+    padding-top: 0 !important;
+    --padding-top: 0 !important;
+}
+.padding-bottom-0 {
+    padding-bottom: 0 !important;
+    --padding-bottom: 0 !important;
+}
+.margin-top-0 {
+    margin-top: 0 !important;
+}
+.margin-top-5 {
+    margin-top: 5px !important;
+}
+.margin-top-20 {
+    margin-top: 20px !important;
+}
+.margin-top-30 {
+    margin-top: 30px !important;
+}
+.margin-top-40 {
+    margin-top: 40px !important;
+}
+.margin-top-50 {
+    margin-top: 50px !important;
+}
+.margin-top-60 {
+    margin-top: 60px !important;
+}
+
+.margin-top-70 {
+    margin-top: 70px !important;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px !important;
+}
+.margin-bottom-20 {
+    margin-bottom: 20px !important;
+}
+.margin-right-10 {
+    margin-right: 10px !important;
+}
+.margin-left-10 {
+    margin-left: 10px !important;
+}
+.margin-10 {
+    margin: 10px !important;
+}
+.margin-5 {
+    margin: 5px !important;
+}
+.text-end {
+    text-align: end;
+    text-align: right;
+}
+.text-start {
+    text-align: start;
+    text-align: left;
+}
+.font-color {
+    color: #444444 !important;
+    --color: #444444 !important;
+}
+.font-color-medium {
+    color: #9ba5a7 !important;
+    --color: #9ba5a7 !important;
+}
+.font-color-light {
+    color: #cdd2de !important;
+    --color: #cdd2de !important;
+}
+.bg-primary {
+    background: var(--ion-color-primary);
+    --background: var(--ion-color-primary);
+    background-color: var(--ion-color-primary);
+}
+.bg-transparent {
+    background: transparent !important;
+    --background: transparent !important;
+    background-color: transparent !important;
+}
+.color-primary {
+    color: var(--ion-color-primary);
+    --color: var(--ion-color-primary);
+}
+.color-light {
+    color: white !important;
+    --color: white !important;
+}
+.color-dark {
+    color: black !important;
+    --color: black !important;
+}
+.bg-dark {
+    background-color: black;
+    --background: black;
+    background: black;
+}
+.bg-light {
+    background-color: white;
+    --background: white;
+    background: white;
+}
+.bg-medium {
+    background-color: #e6e8e9;
+    --background: #e6e8e9;
+    background: #e6e8e9;
+}
+
+.item-inner {
+    padding: 0 !important;
+}
+// .native-input.sc-ion-input-md {
+//     padding-bottom: 0 !important;
+// }
+
+.item-inner {
+    padding: 0 !important;
+}
+// .native-input.sc-ion-input-md {
+//     padding-bottom: 0 !important;
+// }
+
+.indicator {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 40px !important;
+    padding-left: 40px !important;
+}
+
+.center {
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    align-items: center !important;
+}
+.d-flex {
+    display: flex !important;
+}
+ion-button {
+    --box-shadow: none !important;
+}
+//==============================
+
+.margin-top-10 {
+    margin-top: 10px !important;
+    --margin-top: 10px !important;
+}
+.margin-left-10 {
+    margin-left: 10px !important;
+    --margin-start: 10px !important;
+}
+.margin-right-10 {
+    margin-right: 10px !important;
+    --margin-end: 10px !important;
+}
+.margin-horizontal-10 {
+    margin-left: 10px !important;
+    --margin-left: 10px !important;
+    margin-right: 10px !important;
+    --margin-right: 10px !important;
+}
+.margin-vertical-10 {
+    margin-top: 10px !important;
+    --margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    --margin-bottom: 10px !important;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px !important;
+    --margin-bottom: 10px !important;
+}
+//===============================
+.margin-top-5 {
+    margin-top: 5px !important;
+    --margin-top: 5px !important;
+}
+.margin-left-5 {
+    margin-left: 5px !important;
+    --margin-start: 5px !important;
+}
+.margin-right-5 {
+    margin-right: 5px !important;
+    --margin-end: 5px !important;
+}
+.margin-horizontal-5 {
+    margin-left: 5px !important;
+    --margin-left: 5px !important;
+    margin-right: 5px !important;
+    --margin-right: 5px !important;
+}
+.margin-vertical-5 {
+    margin-top: 5px !important;
+    --margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    --margin-bottom: 5px !important;
+}
+.margin-bottom-5 {
+    margin-bottom: 5px !important;
+    --margin-bottom: 5px !important;
+}
+//==============================
+
+.padding-top-5 {
+    padding-top: 5px !important;
+    --padding-top: 5px !important;
+}
+.padding-top-15 {
+    padding-top: 15px !important;
+    --padding-top: 15px !important;
+}
+.padding-left-5 {
+    padding-left: 5px !important;
+    --padding-start: 5px !important;
+}
+.padding-right-5 {
+    padding-right: 5px !important;
+    --padding-end: 5px !important;
+}
+.padding-horizontal-5 {
+    padding-left: 5px !important;
+    --padding-left: 5px !important;
+    padding-right: 5px !important;
+    --padding-right: 5px !important;
+}
+.padding-vertical-5 {
+    padding-top: 5px !important;
+    --padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    --padding-bottom: 5px !important;
+}
+.padding-bottom-5 {
+    padding-bottom: 5px !important;
+    --padding-bottom: 5px !important;
+}
+//====================
+.line-through {
+    text-decoration: line-through;
+}
+
+.ion-touched.ion-valid + .helptext {
+    display: none;
+}
+.ion-untouched + .helptext {
+    display: none;
+}
+.ion-touched.ion-invalid + .helptext {
+    display: block;
+}
+
+.helptext {
+    text-transform: capitalize;
+    font-size: small;
+    padding-top: 5px;
+    padding-right: 5px;
+    text-align: right;
+    color: var(--ion-color-danger);
+}
+//=========================
+
+.width-full {
+    width: 100%;
+}
+//====================================== css for rtl layout ==========================
+[dir="rtl"] {
+    .flip-horizontal {
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    ion-header {
+        .cart-badge {
+            left: 7px;
+            right: unset;
+        }
+    }
+
+    //======================================== app-product-list-card
+
+    app-product-list-card {
+        .absolute {
+            right: auto;
+            left: 0;
+        }
+    }
+}
+//================================= product detail page
+
+.maze-bullet-slides {
+    --bullet-background-active: white;
+    ion-slide {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-pagination-bullet {
+        width: 4px !important;
+        height: 4px !important;
+        margin: 0 3px !important;
+        --bullet-background: white;
+        opacity: 1;
+        border: 1px solid grey;
+    }
+    .swiper-pagination-bullet-active {
+        width: 12px !important;
+        border-radius: 10px;
+    }
+}
+
+ion-action-sheet {
+    .action-sheet-button {
+        --button-color: var(--ion-text-color);
+    }
+}
+
+// .shop-action-sheet {
+//     //--button-color: var(--ion-text-color);
+// }
+
+.app-item-background-color {
+    background-color: var(--app-item-color) !important;
+    background: var(--app-item-color) !important;
+    --background: var(--app-item-color) !important;
+}
+
+// * {
+//     text-transform: capitalize;
+// }
+
+ion-input {
+    text-transform: none !important;
+}
+.hide-content {
+    display: none;
+}

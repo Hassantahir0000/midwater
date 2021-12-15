@@ -1,0 +1,46 @@
+<app-banner></app-banner>
+
+<!-- IMAGE ONLY -->
+<!-- <ion-grid class="ion-no-padding ion-no-margin margin-top-10" [appAnimation]="'fade'">
+  <ion-img [appImageValidate]="70" [appImageValidate]="70" [class.round-borders]="config.roundBordersBool"
+    src="assets/Capture.png" (click)="shared.openShopPage()"></ion-img>
+</ion-grid> -->
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"Shop By Category"|translate}}
+  </ion-label>
+</ion-item>
+
+<!-- grid container -->
+<ion-grid class="categories-grid">
+  <ion-row>
+    <ion-col size="2.4" *ngFor="let c of appCategoriesService.categoriesArray" (click)="onClickCategory(c)"
+      [appAnimation]="'fade'">
+      <ion-row>
+        <ion-img [appImageValidate]="70" src="{{config.imgThumbnailUrlString+c.gallary}}" [class.round-borders]="config.roundBordersBool">
+        </ion-img>
+      </ion-row>
+      <ion-row>
+        <ion-label class="font-small ion-text-capitalize">{{c.name}}</ion-label>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- labels  -->
+<!-- <ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"Top Rated "|translate}}
+  </ion-label>
+</ion-item> -->
+
+<!-- <app-products-slider filter="topseller"></app-products-slider> -->
+
+<!-- <ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"just for you"|translate}}
+  </ion-label>
+</ion-item> -->
+<app-home-products-list></app-home-products-list>

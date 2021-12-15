@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" (click)="shared.toggleMenu()" src="assets/icon/menu.svg"></ion-icon>
+    <ion-title mode="ios"> {{'wish list'|translate}} </ion-title>
+    <ion-icon (click)="openSearchPage()" class="header-icon margin-horizontal-10" slot="end" name="search-outline">
+    </ion-icon>
+    <ion-icon class="header-icon" slot="end" name="bag-outline" (click)="appCartService.openCartPage()"></ion-icon>
+    <ion-badge color="danger" class="cart-badge"><span class="center">{{appCartService.cartTotalItems()}}</span>
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="wish-list-content">
+  <ion-refresher slot="fixed" (ionRefresh)="pullRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <app-no-record-found [data]="productsArray" *ngIf="productsArray.length==0"></app-no-record-found>
+  <!-- <ion-grid class="ion-no-padding top-margin" *ngIf="productsArray.length == 0">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-icon name="heart"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <h4>{{'your wishlist is empty'|translate}}</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-grid class="bottom-products-grid margin-top-10">
+
+    <ion-row>
+      <ion-col size="6" *ngFor="let p of productsArray">
+        <app-product-card [data]="p"></app-product-card>
+        <ion-button size="small" expand="full" color="danger" class="ion-no-margin" (click)="remove(p)" *ngIf="p!=1">
+          <ion-icon [name]="getTrashIconName()"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll #infinite (ionInfinite)="getProducts()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-card *ngIf="data!=1">
+  <div class="card_image_container">
+    <ion-img [appImageValidate]="70" src="{{config.imgThumbnailUrlString+data.product_gallary.gallary_name}}" (click)="openProductPage()">
+    </ion-img>
+    <ion-fab vertical="top" horizontal="start" slot="fixed" class="right-fab">
+      <ion-chip outline=true class="font-extra-small font-bold" *ngIf="data.product_discount_price!=0">
+        <ion-label color="danger">{{'sale'|translate}}</ion-label>
+      </ion-chip>
+      <ion-chip outline=true class="font-extra-small font-bold" *ngIf="data.is_featured!=0">
+        <ion-label color="dark">{{'featured'|translate}}</ion-label>
+      </ion-chip>
+    </ion-fab>
+    <ion-icon [color]="getHeartColor()" name="heart-circle-outline" (click)="clickWishIcon()"></ion-icon>
+  </div>
+  <ion-card-content class="bold font-small truncate ion-no-padding padding-horizontal-5 padding-top-5">
+    <ion-icon [name]="getStarIconName(1)" [color]="getStarIconColor(1)"></ion-icon>
+    <ion-icon [name]="getStarIconName(2)" [color]="getStarIconColor(2)"></ion-icon>
+    <ion-icon [name]="getStarIconName(3)" [color]="getStarIconColor(3)"></ion-icon>
+    <ion-icon [name]="getStarIconName(4)" [color]="getStarIconColor(4)"></ion-icon>
+    <ion-icon [name]="getStarIconName(5)" [color]="getStarIconColor(5)"></ion-icon>
+  </ion-card-content>
+  <ion-card-content class="bold font-medium truncate ion-no-padding padding-horizontal-5" (click)="openProductPage()">
+    <ion-text> {{data.detail[0].title}}</ion-text>
+  </ion-card-content>
+  <!-- <div *ngIf="data.product_type=='variable'">
+    <ion-row class="ion-no-margin">
+      <ion-col size="auto" class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5">
+        <ion-text color="danger">{{data.product_combination[0].price|curency}}
+          - {{data.product_combination[data.product_combination.length-1].price|curency}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </div> -->
+  <!-- *ngIf="data.product_type=='simple'" -->
+  <div>
+    <ion-row *ngIf="data.product_discount_price!=0">
+      <ion-col size="auto" class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5">
+        <ion-text color="danger">{{data.product_discount_price|curency}}</ion-text>
+      </ion-col>
+      <ion-col class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5">
+        <ion-text class="line-through">{{data.product_price|curency}}</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.product_discount_price==0">
+      <ion-col size="auto" class="font-medium truncate ion-no-padding padding-horizontal-5 padding-bottom-5">
+        <ion-text color="danger">{{data.product_price|curency}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-card>
+
+<ion-card *ngIf="data==1">
+  <div class="margin-5">
+    <ion-skeleton-text animated class="borders-radius-0 ion-no-margin" style="height: 150px">
+    </ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 90%">
+    </ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 50%">
+    </ion-skeleton-text>
+  </div>
+</ion-card>

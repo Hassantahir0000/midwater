@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios">{{'address' |translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding-top-10">
+  <app-add-shipping-address *ngIf="currentViewString!='addresslist'" (formIschanged)="getFormData($event)"
+    [editData]="editAddressData">
+  </app-add-shipping-address>
+
+  <app-user-addresses *ngIf="currentViewString=='addresslist'" [editButtons]="true"
+    (onClickAddNew)="showAddNewAddressSecton()" (onClickEditAddress)="onClickEditAddress($event)">
+  </app-user-addresses>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="font-bold" expand="block" color="primary" *ngIf="currentViewString=='addresslist'"
+      [disabled]="!appOrderService.addressIsFilled()">
+      {{'continue'|translate}}</ion-button>
+    <ion-grid *ngIf="currentViewString!='addresslist'">
+      <ion-row>
+        <ion-col size=2>
+          <ion-button fill=clear (click)="cancelAddAddress()" *ngIf="showCancelButton()">
+            <ion-icon slot="icon-only" color="danger" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="font-bold" expand="block" color="primary" [disabled]="disableSaveButtonBool"
+            (click)="saveFormData()">
+            {{'save'|translate}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

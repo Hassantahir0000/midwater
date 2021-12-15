@@ -1,0 +1,72 @@
+<div class="inner-content">
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-button size="small" fill=clear color="medium" (click)="dismiss()">
+      <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-fab>
+  <ion-list class="top-list ion-no-padding bg-transparent">
+    <ion-item lines=none class="bg-transparent">
+      <ion-thumbnail slot="start">
+        <ion-img [appImageValidate]="25" src="{{imageUrlString}}"></ion-img>
+      </ion-thumbnail>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-no-margin">
+          <ion-label class="font-large font-bold ion-text-capitalize" color="danger"> {{calculatePrice()|curency}}
+          </ion-label>
+        </ion-row>
+        <ion-row class="ion-no-margin padding-top-5">
+          <ion-label class="font-large font-bold ion-text-capitalize" color="medium">{{'selected'|translate}}:
+          </ion-label>
+          <ion-label class="font-large font-bold ion-text-capitalize"> <span
+              *ngFor="let v of selectedVariationsArray">{{v.name}},</span></ion-label>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-row class="ion-no-margin">
+      <ion-label class="width-full font-large padding-vertical-10 ion-text-capitalize"
+        [color]="(config.darkModeBool)?'light':'primary'">
+        {{'quantity'|translate}}
+      </ion-label>
+      <ion-chip outline=true [color]="(config.darkModeBool)?'light':'primary'"
+        class="quantity-chip variable-background-color">
+        <ion-icon name="remove-circle" (click)="quantityMinus()" color="primary"></ion-icon>
+        <ion-label class="font-bold">{{quantityNumber}}</ion-label>
+        <ion-icon name="add-circle" (click)="quantityPlus()" color="primary"></ion-icon>
+      </ion-chip>
+    </ion-row>
+    <ion-row class="ion-no-margin ion-text-capitalize" *ngFor="let option of data.attribute">
+
+      <ion-label class="width-full font-large padding-vertical-10 ion-text-capitalize"
+        [color]="(config.darkModeBool)?'light':'primary'">
+        {{option.attributes.detail[0].name}}
+      </ion-label>
+      <ion-row>
+
+        <ion-badge [color]="selectedBadge(option.attributes.detail[0].name,value.product_variation.id)"
+          class="font-extra-small ion-margin-end margin-bottom-10 padding-horizontal-10"
+          *ngFor="let value of option.variations"
+          (click)="addVaration(option.attributes.detail[0].name,value.product_variation.id,value.product_variation.detail[0].name)">
+          {{value.product_variation.detail[0].name}}
+        </ion-badge>
+      </ion-row>
+    </ion-row>
+
+  </ion-list>
+</div>
+
+<ion-footer class="ion-no-border bg-transparent">
+
+  <ion-toolbar class="bg-transparent">
+    <ion-button expand="block" *ngIf="!enableOutOFStockButtonBool"
+      class="ion-no-margin ion-margin-horizontal ion-margin-bottom" color=primary (click)="addToCart()">
+      {{'continue'|translate}}
+    </ion-button>
+    <ion-button expand="block" *ngIf="enableOutOFStockButtonBool"
+      class="ion-no-margin ion-margin-horizontal ion-margin-bottom" color=danger>
+      {{'out of stock'|translate}}
+    </ion-button>
+  </ion-toolbar>
+
+</ion-footer>

@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="close-outline" (click)="dismiss()"></ion-icon>
+    <ion-title mode="ios">{{"Settings"|translate}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- List of Text Items -->
+  <ion-list [class.round-borders]="config.roundBordersBool">
+    <!-- <ion-item (click)="openLanguagePage()">
+      <ion-label class="font-medium font-bold">{{"language"|translate}}</ion-label>
+      <ion-label class="font-medium font-bold ion-text-end" color="danger" slot="end">{{config.languageCodeString}}
+      </ion-label>
+    </ion-item> -->
+    <!-- <ion-item (click)="openCurrencyPage()">
+      <ion-label class="font-medium font-bold">{{"currency"|translate}}</ion-label>
+      <ion-label class="font-medium font-bold ion-text-end" color="danger" slot="end">{{config.currencyCodeString}}
+      </ion-label>
+    </ion-item> -->
+    <!-- <ion-item lines="full">
+      <ion-label class="font-medium font-bold">
+        {{"Dark Mode"|translate}}
+      </ion-label>
+      <ion-toggle [(ngModel)]="darkModeToggle" (ionChange)="changeDarkMode()">
+      </ion-toggle>
+    </ion-item> -->
+    <ion-item (click)="openAboutUsPage()">
+      <ion-label class="font-medium font-bold">{{pageTitle1}}</ion-label>
+    </ion-item>
+    <ion-item (click)="openRefundPolicyPage()">
+      <ion-label class="font-medium font-bold">{{pageTitle2}}</ion-label>
+    </ion-item>
+    <ion-item (click)="openPrivacyPolicyPage()">
+      <ion-label class="font-medium font-bold">{{pageTitle3}}</ion-label>
+    </ion-item>
+    <ion-item (click)="openTermsPage()">
+      <ion-label class="font-medium font-bold">{{pageTitle4}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngIf="appUserService.userIsLogedIn()" lines=none class="bg-transparent">
+    <ion-button expand="block" color="danger" style="width:100%" class="ion-no-margin margin-top-10" (click)="logout()">
+      {{"sign out"|translate}}
+    </ion-button>
+  </ion-item>
+</ion-content>

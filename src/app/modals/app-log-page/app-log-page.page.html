@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">App Logging</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Default Segment -->
+  <ion-segment [(ngModel)]="segmentsTabs">
+    <ion-segment-button value="log">
+      <ion-label>Log</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="error">
+      <ion-label>Error</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="html">
+      <ion-label>html</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="translation">
+      <ion-label>Translation</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="segmentsTabs">
+    <div *ngSwitchCase="'log'" style="padding-left: 5px;">
+      <app-app-json-tree-view [json]="appLogService.data" [expanded]="false">
+      </app-app-json-tree-view>
+    </div>
+    <div *ngSwitchCase="'error'" style="padding-left: 5px;">
+      <app-app-json-tree-view [json]="appLogService.dataError" [expanded]="false">
+      </app-app-json-tree-view>
+    </div>
+    <div *ngSwitchCase="'html'">
+      <span [innerHTML]="appLogService.innerHtml"></span>
+    </div>
+    <div *ngSwitchCase="'translation'">
+      <ion-button class="ion-no-border font-bold" expand="block" (click)="appTranslationService.consoleMissingValues()">
+        Console All Values</ion-button>
+      <app-app-json-tree-view [json]="appTranslationService.missingValues" [expanded]="false">
+      </app-app-json-tree-view>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,17 @@
+app-app-progress-bar {
+    width: 100%;
+}
+
+.heading {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.button_container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    ion-button {
+        --box-shadow: 0;
+    }
+}
+

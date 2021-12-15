@@ -1,0 +1,17 @@
+form {
+    margin: 0;
+}
+ion-list {
+    padding: 0;
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+    ion-item {
+        --background: transparent;
+        ion-input {
+            border-radius: 5px;
+            background-color: var(--app-item-color);
+            --padding-start: 10px;
+            margin-top: 10px;
+        }
+    }
+}

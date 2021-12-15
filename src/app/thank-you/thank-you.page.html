@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border bg-transparent">
+  <ion-toolbar class="bg-transparent">
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'Thank You'| translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-capitalize">
+  <div class="ion-text-center">
+    <ion-card-content>
+      <ion-icon color="primary" name="checkmark-circle"></ion-icon>
+      <h3 class="font-extra-large-20 avenir-next-bold">
+        <ion-text color="primary">{{'congratulations'| translate }}</ion-text>
+      </h3>
+      <h4 class="font-large margin-bottom-20">{{'your order has been placed'| translate }}</h4>
+      <ion-button expand="block" (click)="openOrders()" class="ion-margin-top ion-margin-horizontal" *ngIf="appUserService.userIsLogedIn()">
+        {{'my Orders'| translate }}</ion-button>
+      <ion-button class="ion-margin-top ion-margin-horizontal" (click)="openHome()" expand="block" fill="outline">
+        {{'continue shopping'| translate }}</ion-button>
+    </ion-card-content>
+  </div>
+</ion-content>

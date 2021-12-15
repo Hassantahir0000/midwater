@@ -1,0 +1,13 @@
+<div class="content">
+  <!-- <app-no-record-found [data]="productsArray" *ngIf="productsArray.length==0"></app-no-record-found> -->
+  <ion-slides [options]="sliderConfig" *ngIf="productsArray.length!=0">
+    <ion-slide *ngFor="let p of productsArray">
+      <app-product-card [data]="p" appFadeAnimation></app-product-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-button fill="clear" (click)="openProducts()"> {{'Shop More'| translate}}
+        <ion-icon name="caret-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</div>

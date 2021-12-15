@@ -1,0 +1,15 @@
+<div *ngIf="shared.bannersArray.length!=0" class="content">
+  <div *ngIf="shared.bannersArray[0]==1">
+    <ion-skeleton-text animated style="min-height: 211px;">
+    </ion-skeleton-text>
+  </div>
+  <div *ngIf="shared.bannersArray[0]!=1">
+
+    <ion-slides pager="true" [options]="slideOpts"
+      class="padding-bottom-10 ion-no-margin ion-no-padding maze-bullet-slides" [appAnimation]="'fade'">
+      <ion-slide *ngFor="let b of shared.bannersArray" class="ion-no-padding animate-item" (click)="bannerClick(b)">
+        <ion-img [appImageValidate]="150" [appAnimation]="'fade'" [class.round-borders]="config.roundBordersBool" src="{{config.imgMediumUrlString+b.gallary}}"></ion-img>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</div>

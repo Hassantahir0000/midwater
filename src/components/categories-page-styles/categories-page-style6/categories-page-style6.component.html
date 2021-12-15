@@ -1,0 +1,25 @@
+<ion-grid class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col size="3" *ngFor="let c of getListOfCategories()" class="ion-no-padding">
+      <ion-card (click)="clickCategory(c)" class="ion-no-margin">
+        <ion-avatar>
+          <ion-img [appImageValidate]="25" [src]="config.imgThumbnailUrlString+c.gallary">
+          </ion-img>
+        </ion-avatar>
+        <ion-card-header class="ion-text-center ion-no-padding padding-vertical-5">
+          <ion-card-title class="font-small ion-text-capitalize truncate">{{c.name}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-button expand="block" class="font-small ion-text-capitalize" (click)="clickCategory(parentObject)" fill=clear>
+    {{"view all"|translate}}</ion-button>
+</ion-grid>
+
+<!-- Scrollable Segment -->
+<ion-segment scrollable value="heart" mode=ios [(ngModel)]="segment">
+  <ion-segment-button value="{{c.id}}" *ngFor="let c of categoriesArray" [appAnimation]="'fade'">
+    <ion-img [appImageValidate]="20" [src]="config.imgThumbnailUrlString+c.icon"></ion-img>
+    <ion-label class="ion-text-capitalize font-small">{{c.name}}</ion-label>
+  </ion-segment-button>
+</ion-segment>

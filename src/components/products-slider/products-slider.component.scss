@@ -1,0 +1,19 @@
+.content {
+    padding-left: var(--app-padding-left-right);
+    padding-right: var(--app-padding-left-right);
+    .swiper-slide {
+        width: 40%;
+        text-align: inherit;
+    }
+
+    ion-slides {
+        ion-slide {
+            &:last-child {
+                height: auto;
+            }
+        }
+    }
+    app-product-card {
+        width: 100%;
+    }
+}

@@ -1,0 +1,29 @@
+<ion-tabs #appTabs (ionTabsDidChange)="ionChange(appTabs)">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon src="assets/icon/home.svg"></ion-icon>
+      <ion-label>
+        <b>{{'home'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="categories">
+      <ion-icon src="assets/icon/category.svg"></ion-icon>
+      <ion-label>
+        <b>{{'categories'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="wish-list">
+      <ion-icon src="assets/icon/heart.svg"></ion-icon>
+      <ion-label>
+        <b>{{'wish list'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="settings">
+      <ion-icon src="assets/icon/setting.svg"></ion-icon>
+      <ion-label>
+        <b>{{'account'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

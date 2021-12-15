@@ -1,0 +1,40 @@
+<app-banner></app-banner>
+
+<!-- labels  -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center ion-no-margin font-extra-large ion-text-uppercase font-bold-900">
+    {{"year end sale"|translate}}
+  </ion-label>
+</ion-item>
+
+<!-- IMAGE ONLY -->
+<ion-grid class="ion-no-padding ion-no-margin">
+  <ion-img [appImageValidate]="70" [class.round-borders]="config.roundBordersBool" src="assets/Capture.png" (click)="shared.openShopPage()"></ion-img>
+</ion-grid>
+
+<!-- labels -->
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"featured"|translate}}
+  </ion-label>
+</ion-item>
+<app-products-slider filter="featured"></app-products-slider>
+
+<ion-row lines="none" class="ion-no-padding ion-text-center ion-margin-top">
+  <ion-col class="ion-no-padding">
+    <ion-label class="font-extra-large ion-no-margin ion-text-uppercase font-bold-900">
+      {{"Categories"|translate}}
+    </ion-label>
+  </ion-col>
+</ion-row>
+
+<app-categories-page-style3 parent="0" [dataArray]="appCategoriesService.categoriesArray"
+  (onClickCategory)="openProductPage($event)">
+</app-categories-page-style3>
+
+<ion-item lines="none">
+  <ion-label class="ion-text-center font-extra-large ion-text-uppercase font-bold-900">
+    {{"just for you"|translate}}
+  </ion-label>
+</ion-item>
+<app-home-products-list></app-home-products-list>

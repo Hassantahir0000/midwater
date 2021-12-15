@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+ <ion-title mode="ios"> {{config.appNameString}} </ion-title>    <ion-icon #icon1 class="header-icon" (click)="toggleMenu()" slot="start" src="assets/icon/menu.svg"></ion-icon>
+   
+    <ion-icon (click)="openSearchPage()" class="header-icon margin-horizontal-10" slot="end" name="search-outline">
+    </ion-icon>
+    <ion-icon class="header-icon" slot="end" name="bag-outline" (click)="appCartService.openCartPage()"></ion-icon>
+    <ion-badge color="danger" class="cart-badge"><span class="center">{{appCartService.cartTotalItems()}}</span>
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="padding-top-15">
+  <div class="center" *ngIf="config.homePageNumber==0">
+    <ion-spinner></ion-spinner>
+  </div>
+  <app-home-page-style1 *ngIf="config.homePageNumber==1"></app-home-page-style1>
+  <app-home-page-style2 *ngIf="config.homePageNumber==2"></app-home-page-style2>
+  <app-home-page-style3 *ngIf="config.homePageNumber==3"></app-home-page-style3>
+  <app-home-page-style4 *ngIf="config.homePageNumber==4"></app-home-page-style4>
+  <app-home-page-style5 *ngIf="config.homePageNumber==5"></app-home-page-style5>
+  <app-home-page-style6 *ngIf="config.homePageNumber==6"></app-home-page-style6>
+  <app-home-page-style7 *ngIf="config.homePageNumber==7"></app-home-page-style7>
+  <app-home-page-style8 *ngIf="config.homePageNumber==8"></app-home-page-style8>
+  <app-home-page-style9 *ngIf="config.homePageNumber==9"></app-home-page-style9>
+  <!-- <app-home-page-style10 *ngIf="config.homePageNumber==10"></app-home-page-style10> -->
+
+</ion-content>

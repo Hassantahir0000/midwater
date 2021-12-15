@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"
+      *ngIf="getHeaderTitle()"></ion-icon>
+    <ion-icon #icon1 *ngIf="!getHeaderTitle()" class="header-icon" slot="start" src="assets/icon/menu.svg" (click)="shared.toggleMenu()"></ion-icon>
+    <ion-title mode="ios"> {{'categories'|translate}} </ion-title>
+    <ion-icon (click)="openSearchPage()" class="header-icon margin-horizontal-10" slot="end" name="search-outline">
+    </ion-icon>
+    <ion-icon class="header-icon" slot="end" name="bag-outline" (click)="appCartService.openCartPage()"></ion-icon>
+    <ion-badge color="danger" class="cart-badge"><span class="center">{{appCartService.cartTotalItems()}}</span>
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header class="ion-no-border" *ngIf="getHeaderTitle()">
+  <ion-toolbar>
+    <ion-title mode="ios">{{getHeaderTitle()}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-categories-page-style1 *ngIf="config.categoryPageNumber==1" [parent]="parentIdNumber"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)">
+  </app-categories-page-style1>
+  <app-categories-page-style2 *ngIf="config.categoryPageNumber==2" [parent]="parentIdNumber"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)"></app-categories-page-style2>
+  <app-categories-page-style3 *ngIf="config.categoryPageNumber==3" [parent]="parentIdNumber"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)"></app-categories-page-style3>
+  <app-categories-page-style4 *ngIf="config.categoryPageNumber==4" [parent]="parentIdNumber"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)"></app-categories-page-style4>
+  <app-categories-page-style5 *ngIf="config.categoryPageNumber==5" [parent]="parentIdNumber"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)"></app-categories-page-style5>
+  <app-categories-page-style6 [parent]="parentIdNumber" *ngIf="config.categoryPageNumber==6"
+    [dataArray]="getListOfCategories()" (onClickCategory)="openProductPage($event)"></app-categories-page-style6>
+</ion-content>

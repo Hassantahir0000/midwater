@@ -1,0 +1,42 @@
+<div class="content">
+  <ion-segment [(ngModel)]="topSegmentsString" mode=ios class="app-segments">
+    <ion-segment-button value="1">
+      <ion-label class="font-extra-large ion-text-capitalize">{{'top seller'| translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label class="font-extra-large ion-text-capitalize">{{'featured'| translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label class="font-extra-large ion-text-capitalize">{{'on sale'| translate }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="topSegmentsString">
+    <div *ngSwitchCase="'1'">
+      <ion-grid class="bottom-products-grid">
+        <ion-row>
+          <ion-col size="6" *ngFor="let p of oneProductsArray">
+            <app-product-card [data]="p"></app-product-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngSwitchCase="'2'">
+      <ion-grid class="bottom-products-grid">
+        <ion-row>
+          <ion-col size="6" *ngFor="let p of twoProductsArray">
+            <app-product-card [data]="p"></app-product-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngSwitchCase="'3'">
+      <ion-grid class="bottom-products-grid">
+        <ion-row>
+          <ion-col size="6" *ngFor="let p of threeProductsArray">
+            <app-product-card [data]="p"></app-product-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</div>

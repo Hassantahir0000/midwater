@@ -1,0 +1,47 @@
+<form #form="ngForm" class="margin-top-10" [class.round-borders]="config.roundBordersBool">
+
+  <ion-list class="bg-transparent">
+    <ion-item lines=none>
+      <ion-label position="stacked">* {{'first name'| translate}}</ion-label>
+      <ion-input type="text" class="font-medium" name="delivery_first_name" placeholder="{{'first name'| translate}}"
+        [(ngModel)]="delivery_first_name" required>
+      </ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked">* {{'last name'| translate}}</ion-label>
+      <ion-input type="text" class="font-medium" name="delivery_last_name" placeholder="{{'last name'| translate}}"
+        [(ngModel)]="delivery_last_name" required> </ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked">* {{'country'| translate}}</ion-label>
+      <ion-input class="font-medium" name="delivery_country_name" [(ngModel)]="delivery_country_name" readonly
+        placeholder="{{'country'| translate}}" required (click)="openCountries()"></ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked"> {{'state'| translate}}</ion-label>
+      <ion-input class="font-medium" name="delivery_state_name" [(ngModel)]="delivery_state_name" readonly
+        placeholder="{{'state'| translate}}"  (click)="openStates()">
+      </ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked"> {{'address'| translate}}</ion-label>
+      <ion-input class="font-medium" type="text" name="delivery_street_aadress" [(ngModel)]="delivery_street_aadress"
+         placeholder="{{'address'| translate}}"></ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked"> {{'city'| translate}}</ion-label>
+      <ion-input class="font-medium" type="text" name="delivery_city" [(ngModel)]="delivery_city" 
+        placeholder="{{'city'| translate}}"></ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked"> {{'postcode'| translate}}</ion-label>
+      <ion-input class="font-medium" type="text" name="delivery_postcode" [(ngModel)]="delivery_postcode"
+        placeholder="{{'postcode'| translate}}"></ion-input>
+    </ion-item>
+    <ion-item lines=none>
+      <ion-label position="stacked"> {{'phone'| translate}}</ion-label>
+      <ion-input class="font-medium" type="text" name="delivery_phone" [(ngModel)]="delivery_phone" 
+        placeholder="{{'phone'| translate}}"></ion-input>
+    </ion-item>
+  </ion-list>
+</form>

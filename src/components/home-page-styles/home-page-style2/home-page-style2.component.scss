@@ -1,0 +1,55 @@
+ion-item {
+    --background: transparent;
+    ion-label {
+        margin-bottom: 0;
+    }
+}
+.offers-grid {
+    ion-col {
+        padding: 0;
+        ion-row {
+            ion-icon {
+                font-size: 22px;
+            }
+            ion-label {
+                margin-top: 5px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.categories-grid {
+    margin-top: 10px;
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+    background-color: transparent;
+
+    ion-col {
+        ion-card {
+            margin-bottom: 2px;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            ion-row {
+                --ion-grid-column-padding: 0;
+            }
+        }
+    }
+
+    ion-col:nth-child(even) {
+        padding-left: 5px;
+    }
+    ion-col:nth-child(odd) {
+        padding-right: 5px;
+    }
+}
+.hot-items-grid {
+    padding-left: calc(var(--app-padding-left-right) - 5px);
+    padding-right: calc(var(--app-padding-left-right) - 5px);
+}
+ion-grid {
+    --ion-grid-padding: 0;
+    padding-left: var(--app-padding-left-right);
+    padding-right: var(--app-padding-left-right);
+}

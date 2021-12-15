@@ -1,0 +1,33 @@
+
+ion-card {
+    box-shadow: none;
+    ion-grid {
+        padding: 0;
+        ion-row {
+            ion-col {
+                padding: 0;
+                .card_image_container {
+                    ion-img img {
+                        border-radius: 10px;
+                        img {
+                            border-radius: 10px !important;
+                        }
+                    }
+                }
+                ion-card-content {
+                    padding-top: 0px !important;
+                    padding-bottom: 5px !important;
+                    p {
+                        line-height: 0.9;
+                    }
+                }
+            }
+        }
+    }
+}
+.absolute {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    padding: 5px;
+}

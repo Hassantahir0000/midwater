@@ -1,0 +1,34 @@
+ion-content {
+    //--background: white;
+    --padding-start: var(--app-padding-left-right);
+    --padding-end: var(--app-padding-left-right);
+
+    .bottom-grid {
+        ion-row {
+            ion-col {
+                // ion-button:focus{
+                //     border-bottom: 1px solid black;
+                // }
+                ion-label {
+                    p {
+                        line-height: 1;
+                        //color: #cdd2de;
+                    }
+                }
+                .view-detail-button {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+    ion-list {
+        ion-item {
+            --padding-start: 0;
+            .item-inner {
+                padding: 0 !important;
+            }
+        }
+    }
+}

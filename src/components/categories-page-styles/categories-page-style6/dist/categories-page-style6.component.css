@@ -1,0 +1,44 @@
+ion-segment {
+  display: block;
+  position: absolute;
+  border-radius: 0;
+  top: 10px;
+  height: 100%;
+}
+ion-segment ion-segment-button {
+  --padding-bottom: 20px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 20px;
+  --border-radius: 0;
+  --indicator-box-shadow: none;
+}
+ion-segment ion-segment-button ion-img {
+  width: 12vw;
+}
+
+ion-grid {
+  margin-top: 20px;
+  margin-left: var(--app-padding-left-right);
+  margin-right: var(--app-padding-left-right);
+  background-color: transparent;
+  padding-left: 100px;
+}
+ion-grid ion-col ion-card {
+  margin-bottom: 2px;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+ion-grid ion-col ion-card ion-avatar {
+  margin: auto;
+  width: 12vw;
+  height: 12vw;
+}
+ion-grid ion-col ion-card ion-row {
+  --ion-grid-column-padding: 0;
+}
+ion-grid ion-col {
+  padding-left: 5px;
+  padding-right: 5px;
+}

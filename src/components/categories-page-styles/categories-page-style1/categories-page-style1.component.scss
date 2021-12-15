@@ -1,0 +1,33 @@
+// ion-content{
+//     --background: none;
+// }
+ion-card {
+    margin-bottom: 2px;
+    ion-row {
+        --ion-grid-column-padding: 0;
+        ion-col {
+            align-items: center;
+            display: flex;
+            ion-label {
+                padding: 20px;
+            }
+        }
+    }
+}
+ion-list {
+    margin-top: 10px;
+    margin-left: var(--app-padding-left-right);
+    margin-right: var(--app-padding-left-right);
+    background-color: transparent;
+    ion-item {
+        --background: transparent;
+        margin-bottom: 5px;
+        --inner-padding-end: 0;
+
+        ion-img {
+            width: 12%;
+            margin-inline-end: 10px;
+            --border-radius: 0;
+        }
+    }
+}

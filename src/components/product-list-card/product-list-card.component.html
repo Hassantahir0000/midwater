@@ -1,0 +1,67 @@
+<ion-card class="ion-no-border bg-transparent ion-no-margin" *ngIf="page=='cart' || page=='order'">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <div class="card_image_container" [class.round-borders]="config.roundBordersBool">
+          <ion-img [appImageValidate]="70" src="{{config.imgThumbnailUrlString+data.product_gallary.gallary_name}}">
+          </ion-img>
+        </div>
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content class="font-bold" style="font-weight: 10px;">
+          <ion-icon class="absolute" name="trash-outline" (click)="deleteProductFromCart()" *ngIf="page=='cart'">
+          </ion-icon>
+          <p class="font-medium avenir-next-bold">{{data.product_detail[0].title}}</p>
+          <ion-label class="font-medium" color="danger" *ngIf="data.discount_price!=null">
+            {{data.discount_price|curency}}
+            <ion-text color="medium" class="line-through"> {{data.price|curency}}</ion-text>
+          </ion-label>
+          <ion-label class="font-medium" color="danger" *ngIf="data.discount_price==null">
+            {{data.price|curency}}
+          </ion-label>
+
+          <ion-card-subtitle class="font-small" *ngIf="data.product_combination_id!=null">
+            <span *ngFor="let c of data.product_combination; let i = index">{{c.variation.detail[0].name}}
+              <span *ngIf="data.product_combination.length!=i+1">
+              </span>
+            </span>
+          </ion-card-subtitle>
+          <ion-label class="font-medium ion-text-uppercase">{{'qty'|translate}}: {{data.qty}}</ion-label>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-card class="ion-no-border bg-transparent ion-no-margin" *ngIf="page=='myOrder'">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <div class="card_image_container" [class.round-borders]="config.roundBordersBool">
+          <ion-img [appImageValidate]="70"
+            src="{{config.imgThumbnailUrlString+ data.product.product_gallary.gallary_name}}">
+          </ion-img>
+        </div>
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content class="font-bold" style="font-weight: 10px;">
+          <p class="font-medium avenir-next-bold">{{data.product.detail[0].title}}</p>
+          <ion-label class="font-medium" color="danger" *ngIf="data.product_discount!=null">
+            {{data.product_discount|curency}}
+            <ion-text color="medium" class="line-through"> {{data.product_price|curency}}</ion-text>
+          </ion-label>
+          <ion-label class="font-medium" color="danger" *ngIf="data.product_discount==null">
+            {{data.product_price|curency}}
+          </ion-label>
+          <ion-card-subtitle class="font-small" *ngIf="data.product_combination">
+            <span *ngFor="let c of data.product_combination.combination; let i = index">{{c.variation.detail[0].name}}
+              <span *ngIf="data.product_combination.combination.length!=i+1">,
+              </span>
+            </span>
+          </ion-card-subtitle>
+          <ion-label class="font-medium ion-text-uppercase">{{'qty'|translate}}: {{data.product_qty}}</ion-label>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

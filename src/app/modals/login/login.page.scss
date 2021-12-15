@@ -1,0 +1,57 @@
+ion-content {
+    ion-grid {
+        ion-segment {
+            margin-bottom: 8px;
+        }
+        ion-row {
+            ion-segment-button {
+                ion-label {
+                    text-transform: none;
+                }
+            }
+        }
+    }
+    ion-item {
+        ion-checkbox {
+            --size: 13px;
+            --border-width: 0.3px;
+        }
+        ion-input {
+            --padding-start: 10px;
+            // --placeholder-color: #adadad;
+            // font-size: small;
+        }
+        ion-label {
+            padding-left: 10px;
+        }
+        ion-button {
+            text-transform: none;
+        }
+    }
+    .social-login {
+        min-height: 50px;
+        ion-col {
+            position: relative;
+            .container {
+                display: contents;
+            }
+        }
+    }
+}
+.icons {
+    ion-button {
+        // color: lightgrey;
+        text-transform: none;
+    }
+    ion-label {
+        // color: lightgrey;
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+
+.privacy-policy {
+    ion-col {
+        line-height: 0.9;
+    }
+}

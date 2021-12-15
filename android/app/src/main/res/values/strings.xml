@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Midwater</string>
+    <string name="title_activity_main">Midwater</string>
+    <string name="package_name">com.themescoder.ionic.kundol</string>
+    <string name="custom_url_scheme">https</string>
+    <string name="custom_url_host">kundol-api.vector-coder.com</string>
+    <string name="fb_app_id">1330370640657911</string>
+    <string name="fb_app_name">Android Grocery Ecommerce</string>
+
+    <bool name="fb_auto_log_app_events_enabled">false</bool>
+    <bool name="fb_advertiser_id_collection_enabled">false</bool>
+    <string name="server_client_id">REPLACEME.apps.googleusercontent.com</string>
+</resources>

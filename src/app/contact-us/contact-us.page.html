@@ -1,0 +1,132 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios"> {{'feedback'|translate}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #userForm="ngForm" (ngSubmit)="submit()">
+    <ion-grid style="padding-left: 15px !important; padding-right: 15px !important;">
+      <ion-row>
+        <ion-col>
+          <ion-label class="font-medium"><span>*</span>{{'Please write your feedback below'|translate}} </ion-label>
+          <ion-item lines="none">
+            <!-- <ion-label position="stacked">Textarea</ion-label> -->
+            <ion-textarea rows="6" placeholder="Write your feedback here" type="text" [(ngModel)]="contact.message"
+              name="message" required></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label class="font-medium"><span>*</span> {{'First Name'|translate}}</ion-label>
+          <ion-item lines="none">
+            <!-- <ion-label position="stacked">Textarea</ion-label> -->
+            <ion-input style="padding: 0 !important;" type="text" [(ngModel)]="contact.first_name" name="firstname"
+              placeholder="{{'First Name'|translate}}" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-label class="font-medium"><span>*</span> {{'Last Name'|translate}}</ion-label>
+          <ion-item lines="none">
+            <ion-input style="padding: 0 !important;" type="text" [(ngModel)]="contact.last_name" name="last_name"
+              placeholder="{{'Last Name'|translate}}" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label class="font-medium"><span>*</span>{{'Email'|translate}} </ion-label>
+          <ion-item lines="none">
+            <ion-input placeholder="email@example.com" type="email" email
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="contact.email"
+              required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="button_container">
+      <ion-row>
+        <ion-col>
+          <ion-button class="ion-no-border font-bold" expand="block" type="submit" [disabled]="!userForm.form.valid">{{'Submit'|translate}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
+
+
+<!-- <ion-header>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+  <ion-card class="ion-no-padding">
+    <ion-card-content class="ion-no-padding">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="pin"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <p wrap-text>
+            {{config.address}}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="mail"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <p>
+            {{config.email}}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="call"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <p>
+            {{config.phoneNo}}
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <form #contactForm="ngForm" (ngSubmit)="submit()">
+        <ion-item>
+          <ion-label position="floating">{{'Name'|translate}}</ion-label>
+          <ion-input type="text" name="name" [(ngModel)]="contact.name" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="helptext"> * {{"required"|translate}}</ion-text>
+        <ion-item>
+          <ion-label position="floating">{{'Email'|translate}}</ion-label>
+          <ion-input type="email" email pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email"
+            [(ngModel)]="contact.email" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="helptext"> * {{"invalid email"|translate}}</ion-text>
+        <ion-item>
+          <ion-label position="floating">{{'Your Messsage'|translate}}</ion-label>
+          <ion-input type="text" name="message" [(ngModel)]="contact.message" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="helptext"> * {{"required"|translate}}</ion-text>
+        <ion-col col-12>
+          <label *ngIf="errorMessage!=''">
+            <span>{{errorMessage}}</span>
+          </label>
+        </ion-col>
+
+        <ion-button expand="block" type="submit" [disabled]="!contactForm.form.valid">{{'Send'|translate}}</ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content> -->

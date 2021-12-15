@@ -1,0 +1,16 @@
+ion-item {
+    --background: transparent;
+    ion-label {
+        margin-bottom: 0;
+    }
+}
+
+.hot-items-grid {
+    padding-left: calc(var(--app-padding-left-right) - 5px);
+    padding-right: calc(var(--app-padding-left-right) - 5px);
+}
+ion-grid {
+    --ion-grid-padding: 0;
+    padding-left: var(--app-padding-left-right);
+    padding-right: var(--app-padding-left-right);
+}

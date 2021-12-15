@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon #icon1 class="header-icon" slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+    <ion-title mode="ios">{{'Checkout' |translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid class="ion-no-padding variable-background-color margin-top-5">
+    <ion-row>
+      <app-app-progress-bar [value]="2"></app-app-progress-bar>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="heading color-dark">
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h2 class="ion-text-center font-medium ion-text-capitalize">{{'payment method'|translate}}</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="center">
+    <ion-spinner *ngIf="paymentMethodsArray.length==0"></ion-spinner>
+  </div>
+  <ion-grid class="list-grid" *ngIf="paymentMethodsArray.length!=0">
+    <div *ngFor="let p of paymentMethodsArray">
+      <ion-row class="variable-background-color" [class.round-borders]="config.roundBordersBool"
+        (click)="selectPaymentMethod(p.payment_method_name)">
+        <!-- <ion-col class="ion-align-items-center d-flex padding-vertical-0" id="cash"
+          *ngIf="p.payment_method_id==1 && p.payment_method_default==1 && p.payment_method_status==1">
+          <ion-icon name="cash-outline"></ion-icon>
+          <ion-label class="font-large padding-horizontal-20">
+            {{'card payment'|translate}}</ion-label>
+        </ion-col> -->
+
+        <!-- <ion-col class="ion-align-items-center d-flex padding-vertical-0" id="cash"
+          *ngIf="p.payment_method_id==3 && p.payment_method_status==1">
+          <ion-icon name="cash-outline"></ion-icon>
+          <ion-label class="font-large padding-horizontal-20">{{'bank
+            transfer'|translate}}</ion-label>
+        </ion-col> -->
+
+        <ion-col class="ion-align-items-center d-flex padding-vertical-0" id="cash"
+          *ngIf="p.payment_method_id==4 && p.payment_method_status==1">
+          <ion-icon name="cash-outline"></ion-icon>
+          <ion-label class="font-large padding-horizontal-20">{{'cash on
+            delivery'|translate}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
